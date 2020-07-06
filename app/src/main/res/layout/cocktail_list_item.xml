@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <data>
+                <variable
+                    name="cocktail"
+                    type="com.example.liquorade.domain.Cocktail" />
+        </data>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    tools:layout_editor_absoluteX="141dp"
+                    tools:layout_editor_absoluteY="38dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Drankje"
+                    android:text="@{cocktail.strDrink}"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal" />
+        </LinearLayout>
+
+</layout>
