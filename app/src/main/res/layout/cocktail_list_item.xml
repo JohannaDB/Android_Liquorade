@@ -26,7 +26,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Drankje"
                     android:text="@{cocktail.strDrink}"
                     android:textAlignment="center"
                     android:gravity="center_horizontal" />
