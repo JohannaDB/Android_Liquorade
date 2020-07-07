@@ -12,24 +12,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
                     android:padding="6dp"
-                    android:scaleType="fitCenter"
-                    tools:layout_editor_absoluteX="141dp"
-                    tools:layout_editor_absoluteY="38dp"
+                    android:scaleType="centerCrop"
                     app:imageUrl="@{cocktail.strDrinkThumb}" />
-<!--                    tools:srcCompat="@tools:sample/avatars" -->
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{cocktail.strDrink}"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="6dp" />
         </LinearLayout>
 
 </layout>

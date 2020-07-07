@@ -13,10 +13,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class CocktailViewModel : ViewModel() {
-    private val _status = MutableLiveData<String>()
+enum class CocktailApiStatus { LOADING, ERROR, DONE }
 
-    val status: LiveData<String>
+class CocktailViewModel : ViewModel() {
+    private val _status = MutableLiveData<CocktailApiStatus>()
+
+    val status: LiveData<CocktailApiStatus>
         get() = _status
 
     // The internal MutableLiveData String that stores the status of the most recent request
@@ -42,10 +44,12 @@ class CocktailViewModel : ViewModel() {
     private fun getGinCocktails() {
         scope.launch {
             try {
+                _status.value = CocktailApiStatus.LOADING
                 _cocktailList.value = CocktailApi.retrofitService.getGinDrinks()
-
+                _status.value = CocktailApiStatus.DONE
             } catch (e: Exception) {
-                Log.i("API ERROR: ", e.message.toString())
+                _status.value = CocktailApiStatus.ERROR
+                _cocktailList.value = CocktailList(ArrayList())
             }
         }
     }
