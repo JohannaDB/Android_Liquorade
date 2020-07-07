@@ -21,7 +21,8 @@
                     android:scaleType="fitCenter"
                     tools:layout_editor_absoluteX="141dp"
                     tools:layout_editor_absoluteY="38dp"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:imageUrl="@{cocktail.strDrinkThumb}" />
+<!--                    tools:srcCompat="@tools:sample/avatars" -->
 
                 <TextView
                     android:layout_width="match_parent"

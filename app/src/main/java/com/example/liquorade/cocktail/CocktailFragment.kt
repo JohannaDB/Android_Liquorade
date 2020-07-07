@@ -29,6 +29,9 @@ class CocktailFragment : Fragment() {
         // Giving the binding access to the CocktailViewModel
         binding.viewModel = viewModel
 
+        // Sets the adapter of the cocktailGrid RecyclerView
+        binding.cocktailGrid.adapter = CocktailAdapter()
+
         setHasOptionsMenu(true)
         return binding.root
     }

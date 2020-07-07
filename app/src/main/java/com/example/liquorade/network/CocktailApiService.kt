@@ -1,14 +1,11 @@
 package com.example.liquorade.network
 
-import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.CocktailList
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
@@ -26,8 +23,8 @@ interface CocktailApiService {
      * The @GET annotation indicates that the "realestate" endpoint will be requested with the GET
      * HTTP method
      */
-    @GET("filter.php?a=Alcoholic")
-    suspend fun getAlcoholic():
+    @GET("filter.php?i=Gin")
+    suspend fun getGinDrinks():
             CocktailList
 }
 
