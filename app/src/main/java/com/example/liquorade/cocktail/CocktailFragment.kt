@@ -1,6 +1,7 @@
 package com.example.liquorade.cocktail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -22,6 +23,8 @@ class CocktailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentCocktailBinding.inflate(inflater)
 
+        val categoryName = CocktailFragmentArgs.fromBundle(requireArguments()).categoryName
+        Log.i("CATEGORY", categoryName)
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)
 

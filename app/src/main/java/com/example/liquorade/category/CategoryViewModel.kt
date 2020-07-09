@@ -28,6 +28,11 @@ class CategoryViewModel : ViewModel() {
     val categoryList: LiveData<List<Category>>
         get() = _categoryList
 
+    private val _navigation = MutableLiveData<String>()
+
+    val navigation: LiveData<String>
+        get() = _navigation
+
     val categories = listOf("Gin", "Vodka", "Bourbon", "Light rum", "Dark rum", "Triple sec", "Brandy", "Tequila", "Dry Vermouth", "Sweet Vermouth")
 
     private var viewModelJob = Job()
@@ -56,5 +61,13 @@ class CategoryViewModel : ViewModel() {
                 Log.i("ERROR: ", e.message.toString())
             }
         }
+    }
+
+    fun displayCocktails(categoryName: String) {
+        _navigation.value = categoryName
+    }
+
+    fun navigationComplete() {
+        _navigation.value = null
     }
 }
