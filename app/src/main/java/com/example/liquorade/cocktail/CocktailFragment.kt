@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.liquorade.R
 import com.example.liquorade.databinding.FragmentCocktailBinding
 
 class CocktailFragment : Fragment() {
