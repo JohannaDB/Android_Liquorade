@@ -11,7 +11,6 @@ import com.example.liquorade.category.CategoryAdapter
 import com.example.liquorade.cocktail.CocktailAdapter
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.Category
-import com.example.liquorade.domain.CategoryInformation
 import com.example.liquorade.domain.Cocktail
 
 @BindingAdapter("listData")

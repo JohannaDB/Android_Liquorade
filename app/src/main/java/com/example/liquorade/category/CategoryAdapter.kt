@@ -23,7 +23,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.CategoryViewHolder
         }
 
         override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
-            return oldItem.ingredients[0].idIngredient == newItem.ingredients[0].idIngredient
+            return oldItem.strIngredient1 == newItem.strIngredient1
         }
     }
 

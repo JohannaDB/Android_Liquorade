@@ -6,12 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.Category
+import com.example.liquorade.domain.CategoryList
 import com.example.liquorade.network.CocktailApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import java.util.function.Consumer
 
 class CategoryViewModel : ViewModel() {
     private val _status = MutableLiveData<CocktailApiStatus>()
@@ -26,24 +28,31 @@ class CategoryViewModel : ViewModel() {
     val categoryList: LiveData<List<Category>>
         get() = _categoryList
 
+    val categories = listOf("Gin", "Vodka", "Bourbon", "Light rum", "Dark rum", "Triple sec", "Brandy", "Tequila", "Dry Vermouth", "Sweet Vermouth")
+
     private var viewModelJob = Job()
     private val scope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init {
-        getGinInformation()
+        getInformation()
     }
 
-    private fun getGinInformation() {
+    private fun getInformation() {
         scope.launch {
             try {
                 _status.value = CocktailApiStatus.LOADING
-                val category = CocktailApi.retrofitService.getGinInformation()
-                _categoryList.value!!.toMutableList()!!.add(category)
-                Log.i("ERROR: ", _categoryList.value.toString())
+                val temporaryCategoryList = CocktailApi.retrofitService.getCategories()
+                val categoryList = ArrayList<Category>()
+                temporaryCategoryList.drinks.forEach { category ->
+                    if(categories.contains(category.strIngredient1)) {
+                        categoryList.add(category)
+                    }
+                }
+                _categoryList.value = categoryList
                 _status.value = CocktailApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = CocktailApiStatus.ERROR
-                //_categoryList.value =
+                _categoryList.value = ArrayList()
                 Log.i("ERROR: ", e.message.toString())
             }
         }

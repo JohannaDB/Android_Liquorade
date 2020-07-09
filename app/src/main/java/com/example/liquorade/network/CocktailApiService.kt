@@ -1,6 +1,6 @@
 package com.example.liquorade.network
 
-import com.example.liquorade.domain.Category
+import com.example.liquorade.domain.CategoryList
 import com.example.liquorade.domain.CocktailList
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -19,10 +19,10 @@ private val retrofit =
         .build()
 
 interface CocktailApiService {
-    //Get Gin information
-    @GET("search.php?i=Gin")
-    suspend fun getGinInformation():
-            Category
+    //Get categories
+    @GET("list.php?i=list")
+    suspend fun getCategories():
+            CategoryList
 
     //Get Gin cocktails
     @GET("filter.php?i=Gin")

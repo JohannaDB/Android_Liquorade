@@ -19,11 +19,11 @@
                         android:adjustViewBounds="true"
                         android:padding="6dp"
                         android:scaleType="centerCrop"
-                        app:imageUrl="@{category.ingredients[0].imageUrl}" />
+                        app:imageUrl="@{category.imageUrl}" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{category.ingredients[0].strIngredient}"
+                        android:text="@{category.strIngredient1}"
                         android:textAlignment="center"
                         android:gravity="center_horizontal"
                         android:paddingBottom="6dp" />
