@@ -8,12 +8,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.liquorade.databinding.FragmentCocktailBinding
 
 class CocktailFragment : Fragment() {
-    /**
-     * Lazily initialize our [CocktailViewModel].
-     */
-    private val viewModel: CocktailViewModel by lazy {
-        ViewModelProviders.of(this).get(CocktailViewModel::class.java)
-    }
+    private lateinit var viewModelFactory: CocktailViewModelFactory
+    private lateinit var viewModel: CocktailViewModel
 
     /**
      * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
@@ -24,7 +20,10 @@ class CocktailFragment : Fragment() {
         val binding = FragmentCocktailBinding.inflate(inflater)
 
         val categoryName = CocktailFragmentArgs.fromBundle(requireArguments()).categoryName
-        Log.i("CATEGORY", categoryName)
+
+        viewModelFactory = CocktailViewModelFactory(categoryName)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CocktailViewModel::class.java)
+
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)
 

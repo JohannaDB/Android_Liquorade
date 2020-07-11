@@ -8,6 +8,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 
@@ -24,54 +26,9 @@ interface CocktailApiService {
     suspend fun getCategories():
             CategoryList
 
-    //Get Gin cocktails
-    @GET("filter.php?i=Gin")
-    suspend fun getGinDrinks():
-            CocktailList
-
-    //Get Vodka cocktails
-    @GET("filter.php?i=Vodka")
-    suspend fun getVodkaDrinks():
-            CocktailList
-
-    //Get Bourbon cocktails
-    @GET("filter.php?i=Bourbon")
-    suspend fun getBourbonDrinks():
-            CocktailList
-
-    //Get Light Rum cocktails
-    @GET("filter.php?i=Light_Rum")
-    suspend fun getLightRumDrinks():
-            CocktailList
-
-    //Get Dark Rum cocktails
-    @GET("filter.php?i=Dark_Rum")
-    suspend fun getDarkRumDrinks():
-            CocktailList
-
-    //Get Triple Sec cocktails
-    @GET("filter.php?i=Triple_Sed")
-    suspend fun getTripleSecDrinks():
-            CocktailList
-
-    //Get Brandy cocktails
-    @GET("filter.php?i=Brandy")
-    suspend fun getBrandyDrinks():
-            CocktailList
-
-    //Get Tequila cocktails
-    @GET("filter.php?i=Tequila")
-    suspend fun getTequilaDrinks():
-            CocktailList
-
-    //Get Dry Vermouth cocktails
-    @GET("filter.php?i=Dry_Vermouth")
-    suspend fun getDryVermouthDrinks():
-            CocktailList
-
-    //Get Sweet Vermouth cocktails
-    @GET("filter.php?i=Sweet_Vermouth")
-    suspend fun getSweetVermouthDrinks():
+    //Get cocktails from specific category
+    @GET("filter.php?")
+    suspend fun getCocktails(@Query("i") categoryName : String):
             CocktailList
 }
 

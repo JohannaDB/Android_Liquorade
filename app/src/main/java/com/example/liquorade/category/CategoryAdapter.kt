@@ -27,10 +27,7 @@ class CategoryAdapter(private val click: OnClickListener) : ListAdapter<Category
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): CategoryAdapter.CategoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.CategoryViewHolder {
         return CategoryViewHolder(CategoryListItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
@@ -41,8 +38,6 @@ class CategoryAdapter(private val click: OnClickListener) : ListAdapter<Category
     }
 }
 
-class OnClickListener(
-    val click: (catName: String) -> Unit
-) {
-    fun onClick(catName: String) = click(catName)
+class OnClickListener(val click: (categoryName: String) -> Unit) {
+    fun onClick(categoryName: String) = click(categoryName)
 }
