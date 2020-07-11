@@ -3,12 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/cocktailFragment">
+    app:startDestination="@id/categoryFragment">
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.liquorade.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_cocktailFragment"
+            app:destination="@id/cocktailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cocktailFragment"
         android:name="com.example.liquorade.cocktail.CocktailFragment"
         android:label="fragment_cocktail"
         tools:layout="@layout/fragment_cocktail" >
+        <argument
+            android:name="categoryName"
+            app:argType="string">
+
+        </argument>
 <!--        <action-->
 <!--            android:id="@+id/action_showDetail"-->
 <!--            app:destination="@id/cocktailDetailFragment" />-->

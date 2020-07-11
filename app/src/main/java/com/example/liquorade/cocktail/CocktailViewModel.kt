@@ -15,11 +15,15 @@ import java.lang.Exception
 
 enum class CocktailApiStatus { LOADING, ERROR, DONE }
 
-class CocktailViewModel : ViewModel() {
+class CocktailViewModel(categoryName: String) : ViewModel() {
     private val _status = MutableLiveData<CocktailApiStatus>()
 
     val status: LiveData<CocktailApiStatus>
         get() = _status
+
+    private val _category_Name = MutableLiveData<String>()
+    val category_Name: LiveData<String>
+        get() = _category_Name
 
     // The internal MutableLiveData String that stores the status of the most recent request
     private val _cocktailList = MutableLiveData<CocktailList>()
@@ -35,20 +39,23 @@ class CocktailViewModel : ViewModel() {
      * Call getGinCocktails() on init so we can display status immediately.
      */
     init {
-        getGinCocktails()
+        _category_Name.value = categoryName
+        getCocktails(categoryName)
     }
 
     /**
      * Sets the value of the status LiveData to the Cocktails API status.
      */
-    private fun getGinCocktails() {
+    private fun getCocktails(categoryName: String) {
         scope.launch {
             try {
                 _status.value = CocktailApiStatus.LOADING
-                _cocktailList.value = CocktailApi.retrofitService.getGinDrinks()
+                _cocktailList.value = CocktailApi.retrofitService.getCocktails(categoryName)
+                Log.i("CATEGORYY:", categoryName)
                 _status.value = CocktailApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = CocktailApiStatus.ERROR
+                Log.i("CATEGORYY:", e.message.toString())
                 _cocktailList.value = CocktailList(ArrayList())
             }
         }

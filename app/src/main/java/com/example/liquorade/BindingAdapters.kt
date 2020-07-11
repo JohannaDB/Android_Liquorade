@@ -7,13 +7,21 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.liquorade.category.CategoryAdapter
 import com.example.liquorade.cocktail.CocktailAdapter
 import com.example.liquorade.cocktail.CocktailApiStatus
+import com.example.liquorade.domain.Category
 import com.example.liquorade.domain.Cocktail
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Cocktail>?) {
     val adapter = recyclerView.adapter as CocktailAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("listCategoryData")
+fun bindRecyclerViewCategory(recyclerView: RecyclerView, data: List<Category>?) {
+    val adapter = recyclerView.adapter as CategoryAdapter
     adapter.submitList(data)
 }
 
