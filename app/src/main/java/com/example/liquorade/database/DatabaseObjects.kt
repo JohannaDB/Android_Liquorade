@@ -13,3 +13,12 @@ data class CocktailDb(
     @ColumnInfo(name = "cocktail_image")
     val strDrinkThumb: String
 )
+
+@Entity(tableName = "categories")
+data class CategoryDb(
+    @PrimaryKey(autoGenerate = true)
+    var _id: Long = 0L,
+    @ColumnInfo(name = "category_name")
+    val strIngredient1: String,
+    val imageUrl: String = "https://www.thecocktaildb.com/images/ingredients/$strIngredient1.png"
+)

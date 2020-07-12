@@ -1,21 +1,21 @@
 package com.example.liquorade.category
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.liquorade.cocktail.CocktailApiStatus
+import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.domain.Category
-import com.example.liquorade.domain.CategoryList
 import com.example.liquorade.network.CocktailApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.util.function.Consumer
 
-class CategoryViewModel : ViewModel() {
+class CategoryViewModel(val database: CategoryDatabaseDao, application: Application) : AndroidViewModel(application) {
     private val _status = MutableLiveData<CocktailApiStatus>()
 
     val status: LiveData<CocktailApiStatus>

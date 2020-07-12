@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.databinding.FragmentCocktailBinding
 
 class CocktailFragment : Fragment() {
@@ -21,7 +22,11 @@ class CocktailFragment : Fragment() {
 
         val categoryName = CocktailFragmentArgs.fromBundle(requireArguments()).categoryName
 
-        viewModelFactory = CocktailViewModelFactory(categoryName)
+        val application = requireNotNull(this.activity).application
+
+        val dataSource = CocktailDatabase.getInstance(application).cocktailDatabaseDao
+
+        viewModelFactory = CocktailViewModelFactory(categoryName, dataSource, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CocktailViewModel::class.java)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment

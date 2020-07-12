@@ -23,3 +23,21 @@ interface CocktailDatabaseDao {
     @Query("SELECT * FROM cocktails ORDER BY idDrink DESC")
     fun getAllCocktails(): LiveData<List<CocktailDb>>
 }
+
+@Dao
+interface CategoryDatabaseDao {
+    @Insert
+    fun insert(category: CategoryDb)
+
+    @Update
+    fun update(category: CategoryDb)
+
+    @Query("SELECT * from categories WHERE _id = :key")
+    fun getCategory(key: Long): CategoryDb?
+
+    @Query("DELETE FROM categories")
+    fun clear()
+
+    @Query("SELECT * FROM categories ORDER BY _id DESC")
+    fun getAllCategories(): LiveData<List<CategoryDb>>
+}

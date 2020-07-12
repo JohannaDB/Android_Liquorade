@@ -1,9 +1,12 @@
 package com.example.liquorade.cocktail
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.liquorade.database.CocktailDatabaseDao
 import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.CocktailList
 import com.example.liquorade.network.CocktailApi
@@ -15,7 +18,7 @@ import java.lang.Exception
 
 enum class CocktailApiStatus { LOADING, ERROR, DONE }
 
-class CocktailViewModel(categoryName: String) : ViewModel() {
+class CocktailViewModel(categoryName: String, val database: CocktailDatabaseDao, application: Application) : AndroidViewModel(application) {
     private val _status = MutableLiveData<CocktailApiStatus>()
 
     val status: LiveData<CocktailApiStatus>
