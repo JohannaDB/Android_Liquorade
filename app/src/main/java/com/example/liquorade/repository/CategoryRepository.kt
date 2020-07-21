@@ -44,6 +44,35 @@ class CategoryRepository(private val categoryDao: CategoryDatabaseDao) {
             }
         }
         return test
-
     }
+
+//    fun getCat() : CategoryList {
+//        var categoryList = CategoryList(ArrayList())
+//        scope.launch {
+//            try {
+//                categoryList = CocktailApi.retrofitService.getCategories()
+//            } catch (e: Exception) {
+//                Log.i("AAAAAAAAAA", e.message.toString())
+//            }
+//        }
+//        return categoryList
+//    }
+//
+//    fun insert(list: List<Category>) : List<Category> {
+//        var test = MediatorLiveData<List<CategoryDb>>()
+//        scope.launch {
+//            try {
+//                categoryDao.insert(list.asDatabaseCategory())
+//                withContext(Dispatchers.Main) {
+//                    test.addSource(categoryDao.getAllCategories()) {
+//                        test.removeSource(categoryDao.getAllCategories())
+//                        test.value = it
+//                    }
+//                }
+//            } catch(e: Exception) {
+//                Log.i("AAAAAAAAAA", e.message.toString())
+//            }
+//        }
+//        return test
+//    }
 }

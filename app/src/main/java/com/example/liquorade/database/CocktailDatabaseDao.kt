@@ -11,9 +11,6 @@ interface CocktailDatabaseDao {
     @Update
     fun update(cocktails: List<CocktailDb>)
 
-    @Query("SELECT * from cocktails WHERE idDrink = :key")
-    fun getCocktail(key: String): CocktailDb?
-
     @Query("DELETE FROM cocktails")
     fun clear()
 

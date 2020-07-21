@@ -9,7 +9,7 @@ import com.example.liquorade.domain.Cocktail
 @Entity(tableName = "cocktails")
 data class CocktailDb(
     @PrimaryKey
-    var idDrink: String = "",
+    var idDrink: String,
     @ColumnInfo(name = "cocktail_name")
     val strDrink: String,
     @ColumnInfo(name = "cocktail_image")
@@ -23,19 +23,20 @@ fun List<CocktailDb>.asDomainCocktail(): List<Cocktail> {
         Cocktail(
             idDrink = it.idDrink,
             strDrink = it.strDrink,
-            strDrinkThumb = it.strDrinkThumb)
+            strDrinkThumb = it.strDrinkThumb,
+            categoryName = it.categoryName)
     }
 }
 
-fun List<CocktailDb>.updateCategoryName(categoryName: String): List<CocktailDb> {
-    return map {
-        CocktailDb(
-            idDrink = it.idDrink,
-            strDrink = it.strDrink,
-            strDrinkThumb = it.strDrinkThumb,
-            categoryName = categoryName)
-    }
-}
+//fun List<CocktailDb>.updateCategoryName(categoryName: String): List<CocktailDb> {
+//    return map {
+//        CocktailDb(
+//            idDrink = it.idDrink,
+//            strDrink = it.strDrink,
+//            strDrinkThumb = it.strDrinkThumb,
+//            categoryName = categoryName)
+//    }
+//}
 
 @Entity(tableName = "categories")
 data class CategoryDb(

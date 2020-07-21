@@ -40,6 +40,8 @@ class CategoryViewModel(val database: CategoryDatabaseDao, application: Applicat
     private var viewModelJob = Job()
     private val scope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+//    val categories = listOf("Gin", "Vodka", "Bourbon", "Light rum", "Dark rum", "Triple sec", "Brandy", "Tequila", "Dry Vermouth", "Sweet Vermouth")
+
     fun getCategories(): LiveData<List<CategoryDb>> {
         return categoryRepo.getCategories()
     }
@@ -47,6 +49,17 @@ class CategoryViewModel(val database: CategoryDatabaseDao, application: Applicat
     fun setCategories(categories: List<Category>) {
         _categoryList.value = categories
     }
+
+//    fun getCategoriess() {
+//        val tempCategories = categoryRepo.getCat()
+//        val categorys = ArrayList<Category>()
+//        tempCategories.drinks.forEach { category ->
+//            if (categories.contains(category.strIngredient1)) {
+//                categorys.add(category)
+//            }
+//        }
+//        _categoryList.value = categoryRepo.insert(categorys)
+//    }
 
     fun displayCocktails(categoryName: String) {
         _navigation.value = categoryName

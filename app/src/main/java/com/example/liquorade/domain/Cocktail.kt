@@ -9,7 +9,8 @@ data class CocktailList(
 data class Cocktail(
     val idDrink: String,
     val strDrink: String,
-    val strDrinkThumb: String
+    val strDrinkThumb: String,
+    val categoryName: String = ""
 )
 
 data class CocktailDetail(
@@ -53,12 +54,12 @@ data class CocktailDetail(
     val strMeasure15: String
 )
 
-fun List<Cocktail>.asDatabaseCocktail(): List<CocktailDb> {
+fun List<Cocktail>.asDatabaseCocktail(categoryName: String): List<CocktailDb> {
     return map {
         CocktailDb(
             idDrink = it.idDrink,
             strDrink = it.strDrink,
             strDrinkThumb = it.strDrinkThumb,
-            categoryName = "")
+            categoryName = categoryName)
     }
 }
