@@ -1,18 +1,15 @@
 package com.example.liquorade.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface CocktailDatabaseDao {
-    @Insert
-    fun insert(cocktail: CocktailDb)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(cocktails: List<CocktailDb>)
 
     @Update
-    fun update(cocktail: CocktailDb)
+    fun update(cocktails: List<CocktailDb>)
 
     @Query("SELECT * from cocktails WHERE idDrink = :key")
     fun getCocktail(key: String): CocktailDb?
@@ -20,24 +17,21 @@ interface CocktailDatabaseDao {
     @Query("DELETE FROM cocktails")
     fun clear()
 
-    @Query("SELECT * FROM cocktails ORDER BY idDrink DESC")
-    fun getAllCocktails(): LiveData<List<CocktailDb>>
+    @Query("SELECT * FROM cocktails WHERE category = :categoryName ORDER BY cocktail_name")
+    fun getCocktails(categoryName: String): LiveData<List<CocktailDb>>
 }
 
 @Dao
 interface CategoryDatabaseDao {
-    @Insert
-    fun insert(category: CategoryDb)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(categories: List<CategoryDb>)
 
     @Update
-    fun update(category: CategoryDb)
-
-    @Query("SELECT * from categories WHERE _id = :key")
-    fun getCategory(key: Long): CategoryDb?
+    fun update(categories: List<CategoryDb>)
 
     @Query("DELETE FROM categories")
     fun clear()
 
-    @Query("SELECT * FROM categories ORDER BY _id DESC")
+    @Query("SELECT * FROM categories ORDER BY category_name")
     fun getAllCategories(): LiveData<List<CategoryDb>>
 }

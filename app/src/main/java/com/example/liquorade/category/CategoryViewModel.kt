@@ -7,8 +7,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.database.CategoryDatabaseDao
+import com.example.liquorade.database.CategoryDb
 import com.example.liquorade.domain.Category
 import com.example.liquorade.network.CocktailApi
+import com.example.liquorade.repository.CategoryRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -33,34 +35,17 @@ class CategoryViewModel(val database: CategoryDatabaseDao, application: Applicat
     val navigation: LiveData<String>
         get() = _navigation
 
-    val categories = listOf("Gin", "Vodka", "Bourbon", "Light rum", "Dark rum", "Triple sec", "Brandy", "Tequila", "Dry Vermouth", "Sweet Vermouth")
+    private val categoryRepo = CategoryRepository(database)
 
     private var viewModelJob = Job()
     private val scope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init {
-        getInformation()
+    fun getCategories(): LiveData<List<CategoryDb>> {
+        return categoryRepo.getCategories()
     }
 
-    private fun getInformation() {
-        scope.launch {
-            try {
-                _status.value = CocktailApiStatus.LOADING
-                val temporaryCategoryList = CocktailApi.retrofitService.getCategories()
-                val categoryList = ArrayList<Category>()
-                temporaryCategoryList.drinks.forEach { category ->
-                    if(categories.contains(category.strIngredient1)) {
-                        categoryList.add(category)
-                    }
-                }
-                _categoryList.value = categoryList
-                _status.value = CocktailApiStatus.DONE
-            } catch (e: Exception) {
-                _status.value = CocktailApiStatus.ERROR
-                _categoryList.value = ArrayList()
-                Log.i("ERROR: ", e.message.toString())
-            }
-        }
+    fun setCategories(categories: List<Category>) {
+        _categoryList.value = categories
     }
 
     fun displayCocktails(categoryName: String) {
@@ -69,5 +54,10 @@ class CategoryViewModel(val database: CategoryDatabaseDao, application: Applicat
 
     fun navigationComplete() {
         _navigation.value = null
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

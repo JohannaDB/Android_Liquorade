@@ -1,5 +1,7 @@
 package com.example.liquorade.domain
 
+import com.example.liquorade.database.CocktailDb
+
 data class CocktailList(
     val drinks: List<Cocktail>
 )
@@ -50,3 +52,13 @@ data class CocktailDetail(
     val strMeasure14: String,
     val strMeasure15: String
 )
+
+fun List<Cocktail>.asDatabaseCocktail(): List<CocktailDb> {
+    return map {
+        CocktailDb(
+            idDrink = it.idDrink,
+            strDrink = it.strDrink,
+            strDrinkThumb = it.strDrinkThumb,
+            categoryName = "")
+    }
+}

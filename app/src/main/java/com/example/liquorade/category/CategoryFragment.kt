@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -14,6 +15,7 @@ import com.example.liquorade.R
 import com.example.liquorade.cocktail.CocktailViewModel
 import com.example.liquorade.cocktail.CocktailViewModelFactory
 import com.example.liquorade.database.CocktailDatabase
+import com.example.liquorade.database.asDomainCategory
 import com.example.liquorade.databinding.FragmentCategoryBinding
 import kotlinx.android.synthetic.main.category_list_item.view.*
 
@@ -34,8 +36,6 @@ class CategoryFragment : Fragment() {
 
         viewModelFactory = CategoryViewModelFactory(dataSource, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CategoryViewModel::class.java)
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.setLifecycleOwner(this)
 
         // Giving the binding access to the CategoryViewModel
         binding.viewModel = viewModel
@@ -51,6 +51,11 @@ class CategoryFragment : Fragment() {
             }
         })
 
+        viewModel.getCategories().observe(viewLifecycleOwner, Observer{
+            viewModel.setCategories(it.asDomainCategory())
+        })
+
+        binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
         return binding.root
     }

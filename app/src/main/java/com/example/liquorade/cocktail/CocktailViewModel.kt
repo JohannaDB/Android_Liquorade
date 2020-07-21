@@ -38,9 +38,6 @@ class CocktailViewModel(categoryName: String, val database: CocktailDatabaseDao,
     private var viewModelJob = Job()
     private val scope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    /**
-     * Call getGinCocktails() on init so we can display status immediately.
-     */
     init {
         _category_Name.value = categoryName
         getCocktails(categoryName)
@@ -62,5 +59,10 @@ class CocktailViewModel(categoryName: String, val database: CocktailDatabaseDao,
                 _cocktailList.value = CocktailList(ArrayList())
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
