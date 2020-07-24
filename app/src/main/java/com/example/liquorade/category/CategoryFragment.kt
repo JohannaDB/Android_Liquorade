@@ -34,7 +34,7 @@ class CategoryFragment : Fragment() {
 
         val dataSource = CocktailDatabase.getInstance(application).categoryDatabaseDao
 
-        viewModelFactory = CategoryViewModelFactory(dataSource, application)
+        viewModelFactory = CategoryViewModelFactory(dataSource, application, requireContext())
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CategoryViewModel::class.java)
 
         // Giving the binding access to the CategoryViewModel

@@ -1,6 +1,7 @@
 package com.example.liquorade.category
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -17,7 +18,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class CategoryViewModel(val database: CategoryDatabaseDao, application: Application) : AndroidViewModel(application) {
+class CategoryViewModel(val database: CategoryDatabaseDao, application: Application, val context: Context) : AndroidViewModel(application) {
     private val _status = MutableLiveData<CocktailApiStatus>()
 
     val status: LiveData<CocktailApiStatus>
@@ -35,7 +36,7 @@ class CategoryViewModel(val database: CategoryDatabaseDao, application: Applicat
     val navigation: LiveData<String>
         get() = _navigation
 
-    private val categoryRepo = CategoryRepository(database)
+    private val categoryRepo = CategoryRepository(database, context)
 
     private var viewModelJob = Job()
     private val scope = CoroutineScope(viewModelJob + Dispatchers.Main)
