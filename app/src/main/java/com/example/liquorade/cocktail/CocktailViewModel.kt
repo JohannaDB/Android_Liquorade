@@ -12,7 +12,6 @@ import com.example.liquorade.database.CocktailDb
 import com.example.liquorade.domain.Category
 import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.CocktailList
-import com.example.liquorade.network.CocktailApi
 import com.example.liquorade.repository.CocktailRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

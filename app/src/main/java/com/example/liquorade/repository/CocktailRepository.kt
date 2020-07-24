@@ -5,8 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CocktailDatabaseDao
 import com.example.liquorade.database.CocktailDb
-import com.example.liquorade.domain.asDatabaseCocktail
-import com.example.liquorade.network.CocktailApi
 import kotlinx.coroutines.*
 
 class CocktailRepository (private val cocktailDao: CocktailDatabaseDao) {
@@ -16,20 +14,20 @@ class CocktailRepository (private val cocktailDao: CocktailDatabaseDao) {
 
     fun getCocktails(categoryName: String) : LiveData<List<CocktailDb>> {
         var test = MediatorLiveData<List<CocktailDb>>()
-        scope.launch {
-            try {
-                val cocktailList = CocktailApi.retrofitService.getCocktails(categoryName)
-                cocktailDao.insert(cocktailList.drinks.asDatabaseCocktail(categoryName))
-                withContext(Dispatchers.Main){
-                    test.addSource(cocktailDao.getCocktails(categoryName)){
-                        test.removeSource(cocktailDao.getCocktails(categoryName))
-                        test.value = it
-                    }
-                }
-            } catch (e: Exception) {
-                Log.i("ERROR", e.message.toString())
-            }
-        }
+//        scope.launch {
+//            try {
+//                val cocktailList = CocktailApi.retrofitService.getCocktails(categoryName)
+//                cocktailDao.insert(cocktailList.drinks.asDatabaseCocktail(categoryName))
+//                withContext(Dispatchers.Main){
+//                    test.addSource(cocktailDao.getCocktails(categoryName)){
+//                        test.removeSource(cocktailDao.getCocktails(categoryName))
+//                        test.value = it
+//                    }
+//                }
+//            } catch (e: Exception) {
+//                Log.i("ERROR", e.message.toString())
+//            }
+//        }
         return test
     }
 }

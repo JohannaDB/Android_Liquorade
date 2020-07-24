@@ -27,9 +27,8 @@ class CocktailFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
-        val dataSource = CocktailDatabase.getInstance(application).cocktailDatabaseDao
 
-        viewModelFactory = CocktailViewModelFactory(categoryName, dataSource, application)
+//        viewModelFactory = CocktailViewModelFactory(categoryName, dataSource, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CocktailViewModel::class.java)
 
         // Giving the binding access to the CocktailViewModel
