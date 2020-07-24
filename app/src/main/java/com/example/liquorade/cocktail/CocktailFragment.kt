@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.liquorade.database.CocktailDatabase
+import com.example.liquorade.database.asDomainCategory
+import com.example.liquorade.database.asDomainCocktail
 import com.example.liquorade.databinding.FragmentCocktailBinding
 
 class CocktailFragment : Fragment() {
@@ -21,11 +25,12 @@ class CocktailFragment : Fragment() {
 
         val categoryName = CocktailFragmentArgs.fromBundle(requireArguments()).categoryName
 
-        viewModelFactory = CocktailViewModelFactory(categoryName)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CocktailViewModel::class.java)
+        val application = requireNotNull(this.activity).application
 
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.setLifecycleOwner(this)
+        val dataSource = CocktailDatabase.getInstance(application).cocktailDatabaseDao
+
+        viewModelFactory = CocktailViewModelFactory(categoryName, dataSource, application)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CocktailViewModel::class.java)
 
         // Giving the binding access to the CocktailViewModel
         binding.viewModel = viewModel
@@ -33,6 +38,12 @@ class CocktailFragment : Fragment() {
         // Sets the adapter of the cocktailGrid RecyclerView
         binding.cocktailGrid.adapter = CocktailAdapter()
 
+        viewModel.getCocktails().observe(viewLifecycleOwner, Observer{
+            viewModel.setCocktails(it.asDomainCocktail())
+        })
+
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
         return binding.root
     }
