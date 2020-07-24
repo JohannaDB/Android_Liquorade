@@ -4,11 +4,12 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.liquorade.database.CocktailDatabaseDao
+import com.example.liquorade.repository.CocktailRepository
 
-class CocktailViewModelFactory(private val categoryName: String, private val database: CocktailDatabaseDao, private val application: Application) : ViewModelProvider.Factory {
+class CocktailViewModelFactory(private val cocktailRepo: CocktailRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CocktailViewModel::class.java)) {
-            return CocktailViewModel(categoryName, database, application) as T
+            return CocktailViewModel(cocktailRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

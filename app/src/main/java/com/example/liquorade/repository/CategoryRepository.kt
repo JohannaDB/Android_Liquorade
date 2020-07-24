@@ -19,14 +19,12 @@ import javax.inject.Inject
 class CategoryRepository @Inject constructor(
     private val service: CocktailApiService,
     private val categoryDao: CategoryDatabaseDao,
-    private val context: Context
+    private val connectionChecker: ConnectionChecker
 ) {
 
     private var job = Job()
 
     private val scope = CoroutineScope(job + Dispatchers.IO)
-
-    val connectionChecker = ConnectionChecker.Companion
 
     val categories = listOf("Gin", "Vodka", "Bourbon", "Light rum", "Dark rum", "Triple sec", "Brandy", "Tequila", "Dry Vermouth", "Sweet Vermouth")
 
@@ -34,7 +32,7 @@ class CategoryRepository @Inject constructor(
         var test = MediatorLiveData<List<CategoryDb>>()
         scope.launch {
             try {
-                if (connectionChecker.isInternetAvailable(context)) {
+                if (connectionChecker.isInternetAvailable()) {
                     val temporaryCategoryList = service.getCategories()
                     val categoryList = ArrayList<Category>()
                     temporaryCategoryList.drinks.forEach { category ->

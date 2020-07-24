@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.liquorade.category.CategoryViewModelFactory
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.network.CocktailApiService
+import com.example.liquorade.network.ConnectionChecker
 import com.example.liquorade.repository.CategoryRepository
 import dagger.Module
 import dagger.Provides
@@ -16,7 +17,7 @@ class CategoryModule {
     }
 
     @Provides
-    fun provideRepository(database: CocktailDatabase, service: CocktailApiService, context: Context): CategoryRepository {
-        return CategoryRepository(service, database.categoryDatabaseDao, context)
+    fun provideRepository(database: CocktailDatabase, service: CocktailApiService, connectionChecker: ConnectionChecker): CategoryRepository {
+        return CategoryRepository(service, database.categoryDatabaseDao, connectionChecker)
     }
 }

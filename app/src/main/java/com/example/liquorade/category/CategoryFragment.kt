@@ -43,7 +43,6 @@ class CategoryFragment : Fragment() {
     ): View? {
         val binding = FragmentCategoryBinding.inflate(inflater)
 
-
         // Giving the binding access to the CategoryViewModel
         binding.viewModel = viewModel
 

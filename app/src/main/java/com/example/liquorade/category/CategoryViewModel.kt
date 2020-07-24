@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import javax.inject.Inject
 
-class CategoryViewModel @Inject constructor(private val repository: CategoryRepository) : ViewModel() {
+class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRepository) : ViewModel() {
     private val _status = MutableLiveData<CocktailApiStatus>()
 
     val status: LiveData<CocktailApiStatus>
@@ -31,8 +31,6 @@ class CategoryViewModel @Inject constructor(private val repository: CategoryRepo
 
     val navigation: LiveData<String>
         get() = _navigation
-
-    private val categoryRepo = repository
 
     fun getCategories(): LiveData<List<CategoryDb>> {
         return categoryRepo.getCategories()
