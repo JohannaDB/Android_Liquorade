@@ -1,15 +1,21 @@
 package com.example.liquorade.repository
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CocktailDatabaseDao
 import com.example.liquorade.database.CocktailDb
 import com.example.liquorade.domain.asDatabaseCocktail
-import com.example.liquorade.network.CocktailApi
+import com.example.liquorade.network.CocktailApiService
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
-class CocktailRepository (private val cocktailDao: CocktailDatabaseDao) {
+class CocktailRepository @Inject constructor(
+    private val service: CocktailApiService,
+    private val cocktailDao: CocktailDatabaseDao,
+    private val context: Context
+) {
     private var job = Job()
 
     private val scope = CoroutineScope(job + Dispatchers.IO)
@@ -18,7 +24,7 @@ class CocktailRepository (private val cocktailDao: CocktailDatabaseDao) {
         var test = MediatorLiveData<List<CocktailDb>>()
         scope.launch {
             try {
-                val cocktailList = CocktailApi.retrofitService.getCocktails(categoryName)
+                val cocktailList = service.getCocktails(categoryName)
                 cocktailDao.insert(cocktailList.drinks.asDatabaseCocktail(categoryName))
                 withContext(Dispatchers.Main){
                     test.addSource(cocktailDao.getCocktails(categoryName)){

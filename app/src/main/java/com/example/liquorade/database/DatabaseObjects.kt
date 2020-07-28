@@ -28,16 +28,6 @@ fun List<CocktailDb>.asDomainCocktail(): List<Cocktail> {
     }
 }
 
-//fun List<CocktailDb>.updateCategoryName(categoryName: String): List<CocktailDb> {
-//    return map {
-//        CocktailDb(
-//            idDrink = it.idDrink,
-//            strDrink = it.strDrink,
-//            strDrinkThumb = it.strDrinkThumb,
-//            categoryName = categoryName)
-//    }
-//}
-
 @Entity(tableName = "categories")
 data class CategoryDb(
     @PrimaryKey
