@@ -25,6 +25,7 @@
                         android:layout_height="wrap_content"
                         android:text="@{category.strIngredient1}"
                         android:textAlignment="center"
+                        android:textSize="20sp"
                         android:gravity="center_horizontal"
                         android:paddingBottom="6dp" />
             </LinearLayout>

@@ -1,18 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.example.liquorade.cocktaildetail.CocktailDetailViewModel" />
     </data>
-        <TextView
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        android:padding="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@{viewModel.cocktailDetail.strDrink}"
-            android:layout_marginTop="30dp"
-            android:textSize="26dp"
-            android:textAlignment="center" />
+            tools:context="com.example.liquorade.MainActivity">
+
+            <TextView
+                android:id="@+id/cocktailName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.cocktailDetail.strDrink}"
+                android:textAlignment="center"
+                android:textSize="26sp"
+                android:paddingBottom="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/linear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/cocktailIngredients"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cocktailName">
+                <ImageView
+                    android:id="@+id/cocktailImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="4dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.cocktailDetail.strDrinkThumb}" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/cocktailCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strCategory}" />
+                    <TextView
+                        android:id="@+id/cocktailAlcoholic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strAlcoholic}" />
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/cocktailIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linear">
+                <TextView
+                    android:id="@+id/ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredients:"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/cocktailMeasurement1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_below="@+id/ingredients"
+                    android:text="@{viewModel.cocktailDetail.strMeasure1}" />
+                <TextView
+                    android:id="@+id/cocktailIngredient1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ingredients"
+                    android:layout_toRightOf="@+id/cocktailMeasurement1"
+                    android:layout_toEndOf="@+id/cocktailMeasurement1"
+                    android:text="@{viewModel.cocktailDetail.strIngredient1}" />
+                <TextView
+                    android:id="@+id/cocktailMeasurement2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_below="@+id/cocktailMeasurement1"
+                    android:text="@{viewModel.cocktailDetail.strMeasure2}" />
+                <TextView
+                    android:id="@+id/cocktailIngredient2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cocktailIngredient1"
+                    android:layout_toRightOf="@+id/cocktailMeasurement2"
+                    android:layout_toEndOf="@+id/cocktailMeasurement2"
+                    android:text="@{viewModel.cocktailDetail.strIngredient2}" />
+                <TextView
+                    android:id="@+id/cocktailMeasurement3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_below="@+id/cocktailMeasurement2"
+                    android:text="@{viewModel.cocktailDetail.strMeasure3}" />
+                <TextView
+                    android:id="@+id/cocktailIngredient3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cocktailIngredient2"
+                    android:layout_toRightOf="@+id/cocktailMeasurement3"
+                    android:layout_toEndOf="@+id/cocktailMeasurement3"
+                    android:text="@{viewModel.cocktailDetail.strIngredient3}" />
+                <TextView
+                    android:id="@+id/cocktailMeasurement4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:layout_below="@+id/cocktailMeasurement3"
+                    android:text="@{viewModel.cocktailDetail.strMeasure4}" />
+                <TextView
+                    android:id="@+id/cocktailIngredient4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cocktailIngredient3"
+                    android:layout_toRightOf="@+id/cocktailMeasurement4"
+                    android:layout_toEndOf="@+id/cocktailMeasurement4"
+                    android:text="@{viewModel.cocktailDetail.strIngredient4}" />
+                <TextView
+                    android:id="@+id/instr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/cocktailMeasurement4"
+                    android:text="Instructions:" />
+                <TextView
+                    android:id="@+id/instructions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/instr"
+                    android:text="@{viewModel.cocktailDetail.strInstructions}" />
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
