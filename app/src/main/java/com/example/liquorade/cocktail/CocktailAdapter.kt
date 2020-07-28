@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.liquorade.category.OnClickListener
 import com.example.liquorade.databinding.CocktailListItemBinding
 import com.example.liquorade.domain.Cocktail
 
-class CocktailAdapter : ListAdapter<Cocktail, CocktailAdapter.CocktailViewHolder>(DiffCallback) {
+class CocktailAdapter(private val click: OnClickListener) : ListAdapter<Cocktail, CocktailAdapter.CocktailViewHolder>(DiffCallback) {
     class CocktailViewHolder(private var binding: CocktailListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(cocktail: Cocktail) {
@@ -33,6 +34,7 @@ class CocktailAdapter : ListAdapter<Cocktail, CocktailAdapter.CocktailViewHolder
 
     override fun onBindViewHolder(holder: CocktailAdapter.CocktailViewHolder, position: Int) {
         val cocktail = getItem(position)
+        holder.itemView.setOnClickListener { click.onClick(getItem(position).idDrink) }
         holder.bind(cocktail)
     }
 }

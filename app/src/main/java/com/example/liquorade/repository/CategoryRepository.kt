@@ -21,7 +21,6 @@ class CategoryRepository @Inject constructor(
     private val categoryDao: CategoryDatabaseDao,
     private val connectionChecker: ConnectionChecker
 ) {
-
     private var job = Job()
 
     private val scope = CoroutineScope(job + Dispatchers.IO)

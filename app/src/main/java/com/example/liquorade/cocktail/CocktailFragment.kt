@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.liquorade.LiquoradeApplication
+import com.example.liquorade.category.OnClickListener
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.database.asDomainCategory
 import com.example.liquorade.database.asDomainCocktail
@@ -29,10 +31,7 @@ class CocktailFragment : Fragment() {
 
         (requireActivity().application as LiquoradeApplication).component.cocktailComponent().create().inject(this)
     }
-    /**
-     * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
-     * to enable Data Binding to observe LiveData, and sets up the RecyclerView with an adapter.
-     */
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentCocktailBinding.inflate(inflater)
@@ -41,7 +40,15 @@ class CocktailFragment : Fragment() {
         binding.viewModel = viewModel
 
         // Sets the adapter of the cocktailGrid RecyclerView
-        binding.cocktailGrid.adapter = CocktailAdapter()
+        binding.cocktailGrid.adapter = CocktailAdapter( OnClickListener { viewModel.displayCocktailDetails(it) })
+
+        viewModel.navigation.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                this.findNavController()
+                    .navigate(CocktailFragmentDirections.actionCocktailFragmentToCocktailDetailFragment(it))
+                viewModel.navigationComplete()
+            }
+        })
 
         viewModel.getCocktails(args.categoryName).observe(viewLifecycleOwner, Observer{
             viewModel.setCocktails(it.asDomainCocktail())
@@ -52,12 +59,4 @@ class CocktailFragment : Fragment() {
         setHasOptionsMenu(true)
         return binding.root
     }
-
-    /**
-     * Inflates the overflow menu that contains filtering options.
-     */
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.overflow_menu, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
 }
