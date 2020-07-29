@@ -45,7 +45,10 @@ class CocktailDetailFragment : Fragment() {
 
         viewModel.getCocktailDetails(args.cocktailId).observe(viewLifecycleOwner, Observer{
             viewModel.setCocktailDetails(it)
+            viewModel.setIngredients(it.ingredients)
         })
+
+//        binding.listview.adapter = mijnadapter(context, android.R.layout.listview_item, viewModel.ingredients)
 
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)

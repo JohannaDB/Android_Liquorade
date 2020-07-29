@@ -85,71 +85,21 @@
                     android:text="Ingredients:"
                     android:textSize="20sp" />
                 <TextView
-                    android:id="@+id/cocktailMeasurement1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
-                    android:layout_below="@+id/ingredients"
-                    android:text="@{viewModel.cocktailDetail.strMeasure1}" />
-                <TextView
-                    android:id="@+id/cocktailIngredient1"
+                    android:id="@+id/test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ingredients"
-                    android:layout_toRightOf="@+id/cocktailMeasurement1"
-                    android:layout_toEndOf="@+id/cocktailMeasurement1"
-                    android:text="@{viewModel.cocktailDetail.strIngredient1}" />
-                <TextView
-                    android:id="@+id/cocktailMeasurement2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
-                    android:layout_below="@+id/cocktailMeasurement1"
-                    android:text="@{viewModel.cocktailDetail.strMeasure2}" />
-                <TextView
-                    android:id="@+id/cocktailIngredient2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/cocktailIngredient1"
-                    android:layout_toRightOf="@+id/cocktailMeasurement2"
-                    android:layout_toEndOf="@+id/cocktailMeasurement2"
-                    android:text="@{viewModel.cocktailDetail.strIngredient2}" />
-                <TextView
-                    android:id="@+id/cocktailMeasurement3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
-                    android:layout_below="@+id/cocktailMeasurement2"
-                    android:text="@{viewModel.cocktailDetail.strMeasure3}" />
-                <TextView
-                    android:id="@+id/cocktailIngredient3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/cocktailIngredient2"
-                    android:layout_toRightOf="@+id/cocktailMeasurement3"
-                    android:layout_toEndOf="@+id/cocktailMeasurement3"
-                    android:text="@{viewModel.cocktailDetail.strIngredient3}" />
-                <TextView
-                    android:id="@+id/cocktailMeasurement4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
-                    android:layout_below="@+id/cocktailMeasurement3"
-                    android:text="@{viewModel.cocktailDetail.strMeasure4}" />
-                <TextView
-                    android:id="@+id/cocktailIngredient4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/cocktailIngredient3"
-                    android:layout_toRightOf="@+id/cocktailMeasurement4"
-                    android:layout_toEndOf="@+id/cocktailMeasurement4"
-                    android:text="@{viewModel.cocktailDetail.strIngredient4}" />
+                    android:text="@{viewModel.cocktailDetail.ingredients.toString()}" />
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
                 <TextView
                     android:id="@+id/instr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:layout_below="@+id/cocktailMeasurement4"
+                    android:layout_below="@+id/test"
                     android:text="Instructions:" />
                 <TextView
                     android:id="@+id/instructions"

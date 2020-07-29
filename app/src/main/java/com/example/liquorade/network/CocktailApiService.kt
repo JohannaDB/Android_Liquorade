@@ -1,6 +1,7 @@
 package com.example.liquorade.network
 
 import com.example.liquorade.domain.CategoryList
+import com.example.liquorade.domain.CocktailDetail
 import com.example.liquorade.domain.CocktailDetails
 import com.example.liquorade.domain.CocktailList
 import com.squareup.moshi.Moshi
@@ -24,6 +25,7 @@ interface CocktailApiService {
             CocktailList
 
     @GET("lookup.php?")
+    @Annotation
     suspend fun getCocktailDetails(@Query("i") cocktailId: String):
-            CocktailDetails
+            CocktailDetail
 }

@@ -13,11 +13,23 @@ data class Cocktail(
     val categoryName: String = ""
 )
 
-data class CocktailDetails(
-    val drinks: List<CocktailDetail>
+data class CocktailDetail(
+    val idDrink: Int,
+    val strDrink: String,
+    val strDrinkThumb: String,
+    val strTags: String? = "",
+    val strCategory: String,
+    val strAlcoholic: String,
+    val strGlass: String,
+    val strInstructions: String,
+    val ingredients: Map<String?, String?>
 )
 
-data class CocktailDetail(
+data class CocktailDetails(
+    val drinks: List<CocktailDetailNetwork>
+)
+
+data class CocktailDetailNetwork(
     val idDrink: Int,
     val strDrink: String,
     val strDrinkThumb: String,

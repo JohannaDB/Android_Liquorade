@@ -3,10 +3,8 @@ package com.example.liquorade.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.example.liquorade.database.CategoryDb
-import com.example.liquorade.database.CocktailDb
 import com.example.liquorade.domain.CocktailDetail
-import com.example.liquorade.domain.asDatabaseCocktail
+import com.example.liquorade.domain.CocktailDetailNetwork
 import com.example.liquorade.network.CocktailApiService
 import com.example.liquorade.network.ConnectionChecker
 import kotlinx.coroutines.*
@@ -26,7 +24,7 @@ class CocktailDetailRepository @Inject constructor(
             try {
                 if (connectionChecker.isInternetAvailable()) {
                     withContext(Dispatchers.Main) {
-                        cocktailDetails.value = service.getCocktailDetails(cocktailId).drinks[0]
+                        cocktailDetails.value = service.getCocktailDetails(cocktailId)
                     }
                 } else {
                     cocktailDetails.value = null
