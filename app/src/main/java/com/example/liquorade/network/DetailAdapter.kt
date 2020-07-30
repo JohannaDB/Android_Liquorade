@@ -13,16 +13,6 @@ class DetailAdapter {
     fun fromJson(jsonString: CocktailDetails): CocktailDetail {
         val map = mutableMapOf<String?, String?>()
         val drinks = jsonString.drinks[0]
-        val cocktailDetail = CocktailDetail(
-            drinks.idDrink,
-            drinks.strDrink,
-            drinks.strDrinkThumb,
-            drinks.strTags,
-            drinks.strCategory,
-            drinks.strAlcoholic,
-            drinks.strGlass,
-            drinks.strInstructions,
-            map)
         map[drinks.strIngredient1] = drinks.strMeasure1
         map[drinks.strIngredient2] = drinks.strMeasure2
         map[drinks.strIngredient3] = drinks.strMeasure3
@@ -38,6 +28,16 @@ class DetailAdapter {
         map[drinks.strIngredient13] = drinks.strMeasure13
         map[drinks.strIngredient14] = drinks.strMeasure14
         map[drinks.strIngredient15] = drinks.strMeasure15
+        val cocktailDetail = CocktailDetail(
+            drinks.idDrink,
+            drinks.strDrink,
+            drinks.strDrinkThumb,
+            drinks.strTags,
+            drinks.strCategory,
+            drinks.strAlcoholic,
+            drinks.strGlass,
+            drinks.strInstructions,
+            map)
         return cocktailDetail
     }
 

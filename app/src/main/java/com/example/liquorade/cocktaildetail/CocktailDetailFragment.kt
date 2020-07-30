@@ -2,6 +2,7 @@ package com.example.liquorade.cocktaildetail
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.liquorade.LiquoradeApplication
+import com.example.liquorade.R
 import com.example.liquorade.category.CategoryAdapter
 import com.example.liquorade.category.CategoryFragmentDirections
 import com.example.liquorade.category.OnClickListener
@@ -46,9 +48,11 @@ class CocktailDetailFragment : Fragment() {
         viewModel.getCocktailDetails(args.cocktailId).observe(viewLifecycleOwner, Observer{
             viewModel.setCocktailDetails(it)
             viewModel.setIngredients(it.ingredients)
+            binding.ingredientList.adapter = CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
+            Log.i("TEST", it.ingredients.entries.toList().toString())
         })
 
-//        binding.listview.adapter = mijnadapter(context, android.R.layout.listview_item, viewModel.ingredients)
+
 
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
