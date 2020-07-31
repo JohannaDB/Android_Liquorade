@@ -10,19 +10,12 @@
             type="com.example.liquorade.cocktaildetail.CocktailDetailViewModel" />
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        android:padding="12dp">
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:scrollbars="vertical">-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" >-->
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="false"
-            android:padding="12dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,11 +29,10 @@
                 android:paddingBottom="4dp"
                 android:text="@{viewModel.cocktailDetail.strDrink}"
                 android:textAlignment="center"
-                android:textSize="26sp"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="igiughlkj" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/linear"
@@ -53,51 +45,74 @@
 
                 <ImageView
                     android:id="@+id/cocktailImage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_weight="1"
+                    android:paddingEnd="4dp"
                     android:paddingRight="4dp"
-                    android:paddingBottom="4dp"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{viewModel.cocktailDetail.strDrinkThumb}" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingStart="4dp"
+                    android:paddingLeft="4dp">
+
+                    <TextView
+                        android:id="@+id/cocktailCat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/category"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/cocktailCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.cocktailDetail.strCategory}" />
+                        android:text="@{viewModel.cocktailDetail.strCategory}"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/cocktailAlcoholic"
+                        android:id="@+id/serving"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.cocktailDetail.strAlcoholic}" />
+                        android:text="@string/serving_glass"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/servingGlass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strGlass}"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/cocktailIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:paddingTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear">
+
                 <TextView
                     android:id="@+id/ingredients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ingredients:"
+                    android:text="@string/ingredients"
+                    android:paddingBottom="4dp"
                     android:textSize="20sp" />
 
                 <com.example.liquorade.util.NonScrollListView
                     android:id="@+id/ingredientList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
                     android:layout_below="@+id/ingredients" />
 
                 <TextView
@@ -105,7 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ingredientList"
-                    android:text="Instructions:"
+                    android:paddingBottom="4dp"
+                    android:text="@string/instructions"
                     android:textSize="20sp" />
 
                 <TextView
@@ -113,34 +129,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/instr"
-                    android:text="@{viewModel.cocktailDetail.strInstructions}" />
-                <TextView
-                    android:id="@+id/instructions2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/instructions"
-                    android:text="@{viewModel.cocktailDetail.strInstructions}" />
-                <TextView
-                    android:id="@+id/instructions3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/instructions2"
-                    android:text="@{viewModel.cocktailDetail.strInstructions}" />
-                <TextView
-                    android:id="@+id/instructions4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/instructions3"
-                    android:text="@{viewModel.cocktailDetail.strInstructions}" />
-                <TextView
-                    android:id="@+id/instructions5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/instructions4"
-                    android:text="@{viewModel.cocktailDetail.strInstructions}" />
+                    android:text="@{viewModel.cocktailDetail.strInstructions}"
+                    android:textSize="16sp" />
+
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    </androidx.core.widget.NestedScrollView>-->
     </ScrollView>
-<!--    </LinearLayout>-->
 </layout>
