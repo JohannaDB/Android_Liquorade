@@ -21,17 +21,17 @@
         <argument
             android:name="categoryName"
             app:argType="string">
-
         </argument>
-<!--        <action-->
-<!--            android:id="@+id/action_showDetail"-->
-<!--            app:destination="@id/cocktailDetailFragment" />-->
+        <action
+            android:id="@+id/action_cocktailFragment_to_cocktailDetailFragment"
+            app:destination="@id/cocktailDetailFragment" />
     </fragment>
-
-<!--    <fragment-->
-<!--        android:id="@+id/cocktailDetailFragment"-->
-<!--        android:name="com.example.liquorade.cocktail.CocktailDetail"-->
-<!--        android:label="fragment_cocktailDetail"-->
-<!--        tools:layout="@layout/fragment_cocktailDetail">-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/cocktailDetailFragment"
+        android:name="com.example.liquorade.cocktaildetail.CocktailDetailFragment"
+        android:label="CocktailDetailFragment" >
+        <argument
+            android:name="cocktailId"
+            app:argType="string" />
+    </fragment>
 </navigation>

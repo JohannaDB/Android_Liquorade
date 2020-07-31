@@ -27,7 +27,7 @@ class NetworkModule {
 
     @Provides
     fun provideMoshi(): Moshi {
-        return Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        return Moshi.Builder().add(DetailAdapter()).add(KotlinJsonAdapterFactory()).build()
     }
 
     @Provides

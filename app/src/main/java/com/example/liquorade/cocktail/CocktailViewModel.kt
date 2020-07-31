@@ -40,6 +40,10 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
     val cocktailList: LiveData<List<Cocktail>>
         get() = _cocktailList
 
+    private val _navigation = MutableLiveData<String>()
+
+    val navigation: LiveData<String>
+        get() = _navigation
 
     fun getCocktails(categoryName: String): LiveData<List<CocktailDb>> {
         _category_Name.value = categoryName
@@ -48,5 +52,13 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
 
     fun setCocktails(cocktails: List<Cocktail>) {
         _cocktailList.value = cocktails
+    }
+
+    fun displayCocktailDetails(cocktailId: String) {
+        _navigation.value = cocktailId
+    }
+
+    fun navigationComplete() {
+        _navigation.value = null
     }
 }

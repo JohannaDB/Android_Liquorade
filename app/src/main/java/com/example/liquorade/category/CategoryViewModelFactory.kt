@@ -8,10 +8,10 @@ import com.example.liquorade.cocktail.CocktailViewModel
 import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.repository.CategoryRepository
 
-class CategoryViewModelFactory(private val repository: CategoryRepository) : ViewModelProvider.Factory {
+class CategoryViewModelFactory(private val categoryRepo: CategoryRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
-            return CategoryViewModel(repository) as T
+            return CategoryViewModel(categoryRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
