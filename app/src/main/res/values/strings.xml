@@ -6,4 +6,6 @@
     <string name="ingredients">Ingredients:</string>
     <string name="serving_glass">Serving Glass:</string>
     <string name="category">Category:</string>
+    <string name="about">About</string>
+    <string name="aboutLiquorade">About Liquorade</string>
 </resources>
