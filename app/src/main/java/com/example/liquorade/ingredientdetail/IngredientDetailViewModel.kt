@@ -19,8 +19,12 @@ class IngredientDetailViewModel @Inject constructor(private val ingredientRepo: 
         get() = _ingredientName
 
     fun getIngredientDetails(ingredientName: String): LiveData<IngredientDetail> {
-        _ingredientName.value = ingredientName
-        return ingredientRepo.getIngredientDetails(ingredientName)
+        if(ingredientName == "Dark rum") {
+            _ingredientName.value = "Rum"
+        } else {
+            _ingredientName.value = ingredientName
+        }
+        return ingredientRepo.getIngredientDetails(_ingredientName.value.toString())
     }
 
     fun setIngredientDetails(ingredientdetail: IngredientDetail) {

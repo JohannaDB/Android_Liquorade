@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/cocktailFragment"
         android:name="com.example.liquorade.cocktail.CocktailFragment"
-        android:label="Cocktails"
+        android:label="{categoryName} cocktails"
         tools:layout="@layout/fragment_cocktail">
         <argument
             android:name="categoryName"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/ingredientDetailFragment"
         android:name="com.example.liquorade.ingredientdetail.IngredientDetailFragment"
-        android:label="fragment_ingredient_detail"
+        android:label="{ingredientName}"
         tools:layout="@layout/fragment_ingredient_detail">
         <argument
             android:name="ingredientName"
