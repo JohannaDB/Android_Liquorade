@@ -1,9 +1,6 @@
 package com.example.liquorade.network
 
-import com.example.liquorade.domain.CategoryList
-import com.example.liquorade.domain.CocktailDetail
-import com.example.liquorade.domain.CocktailDetails
-import com.example.liquorade.domain.CocktailList
+import com.example.liquorade.domain.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -28,4 +25,8 @@ interface CocktailApiService {
     @Annotation
     suspend fun getCocktailDetails(@Query("i") cocktailId: String):
             CocktailDetail
+
+    @GET("search.php?")
+    suspend fun getIngredientDetails(@Query("i") ingredientName: String):
+            IngredientDetails
 }

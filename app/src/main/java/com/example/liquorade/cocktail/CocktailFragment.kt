@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.liquorade.LiquoradeApplication
+import com.example.liquorade.R
 import com.example.liquorade.category.OnClickListener
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.database.asDomainCategory
@@ -49,6 +51,12 @@ class CocktailFragment : Fragment() {
                 viewModel.navigationComplete()
             }
         })
+
+        binding.infoButton.setOnClickListener { _ ->
+            if(viewModel.category_Name != "") {
+                findNavController().navigate(CocktailFragmentDirections.actionCocktailFragmentToIngredientDetailFragment(viewModel.category_Name))
+            }
+        }
 
         viewModel.getCocktails(args.categoryName).observe(viewLifecycleOwner, Observer{
             viewModel.setCocktails(it.asDomainCocktail())

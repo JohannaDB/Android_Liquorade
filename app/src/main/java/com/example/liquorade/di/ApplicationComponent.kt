@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.liquorade.category.di.CategoryComponent
 import com.example.liquorade.cocktail.di.CocktailComponent
 import com.example.liquorade.cocktaildetail.di.CocktailDetailComponent
+import com.example.liquorade.ingredientdetail.di.IngredientDetailComponent
 import com.example.liquorade.network.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -18,7 +19,8 @@ interface ApplicationComponent {
     fun categoryComponent(): CategoryComponent.Factory
     fun cocktailComponent(): CocktailComponent.Factory
     fun cocktailDetailComponent(): CocktailDetailComponent.Factory
+    fun ingredientDetailComponent(): IngredientDetailComponent.Factory
 }
 
-@Module(subcomponents = [CategoryComponent::class, CocktailComponent::class, CocktailDetailComponent::class])
+@Module(subcomponents = [CategoryComponent::class, CocktailComponent::class, CocktailDetailComponent::class, IngredientDetailComponent::class])
 object Subcomponents

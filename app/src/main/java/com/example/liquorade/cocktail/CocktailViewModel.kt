@@ -29,8 +29,8 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
     val status: LiveData<CocktailApiStatus>
         get() = _status
 
-    private val _category_Name = MutableLiveData<String>()
-    val category_Name: LiveData<String>
+    private var _category_Name: String = ""
+    val category_Name: String
         get() = _category_Name
 
     // The internal MutableLiveData String that stores the status of the most recent request
@@ -46,7 +46,7 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
         get() = _navigation
 
     fun getCocktails(categoryName: String): LiveData<List<CocktailDb>> {
-        _category_Name.value = categoryName
+        _category_Name = categoryName
         return cocktailRepo.getCocktails(categoryName)
     }
 
