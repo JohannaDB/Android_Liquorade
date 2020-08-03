@@ -58,7 +58,7 @@ class CocktailFragment : Fragment() {
         }
 
         viewModel.getCocktails(args.categoryName).observe(viewLifecycleOwner, Observer{
-            viewModel.setCocktails(it.asDomainCocktail())
+            viewModel.setCocktails(it)
         })
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
