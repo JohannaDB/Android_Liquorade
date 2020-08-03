@@ -6,4 +6,6 @@
     <string name="category">Category:</string>
     <string name="about">About</string>
     <string name="aboutLiquorade">About Liquorade</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

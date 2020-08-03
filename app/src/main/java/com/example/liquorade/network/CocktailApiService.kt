@@ -29,4 +29,9 @@ interface CocktailApiService {
     @GET("search.php?")
     suspend fun getIngredientDetails(@Query("i") ingredientName: String):
             IngredientDetails
+
+    @GET("random.php")
+    @Annotation
+    suspend fun getRandomCocktail():
+            CocktailDetail
 }

@@ -17,7 +17,6 @@ class CocktailDetailAdapter(context: Context, ingredientList: Int, objects: List
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var binding = IngredientListItemBinding.inflate(LayoutInflater.from(context))
         val ingredient = getItem(position)
-        Log.i("INGR_", ingredient.toString())
         if(ingredient != null) {
             binding.ingredientText.setText(ingredient?.key)
             binding.measurementText.setText(ingredient?.value)
@@ -27,6 +26,5 @@ class CocktailDetailAdapter(context: Context, ingredientList: Int, objects: List
 
     override fun getCount(): Int {
         return if (allItems[allItems.size - 1].key != null) allItems.size else allItems.size - 1
-
     }
 }

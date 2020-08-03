@@ -30,7 +30,6 @@ class CocktailFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         (requireActivity().application as LiquoradeApplication).component.cocktailComponent().create().inject(this)
     }
 

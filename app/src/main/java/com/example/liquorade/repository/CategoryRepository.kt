@@ -1,9 +1,6 @@
 package com.example.liquorade.repository
 
-import android.content.Context
-import android.net.ConnectivityManager
 import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CategoryDatabaseDao

@@ -1,12 +1,10 @@
 package com.example.liquorade.repository
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CocktailDatabaseDao
 import com.example.liquorade.database.CocktailDb
-import com.example.liquorade.domain.asDatabaseCategory
 import com.example.liquorade.domain.asDatabaseCocktail
 import com.example.liquorade.network.CocktailApiService
 import com.example.liquorade.network.ConnectionChecker

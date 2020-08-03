@@ -50,4 +50,9 @@
             android:name="ingredientName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/randomCocktailFragment"
+        android:name="com.example.liquorade.randomcocktail.RandomCocktailFragment"
+        android:label="Random cocktail"
+        tools:layout="@layout/fragment_random_cocktail" />
 </navigation>

@@ -6,4 +6,7 @@
     <item
         android:id="@+id/categoryFragment"
         android:title="Categories" />
+    <item
+        android:id="@+id/randomCocktailFragment"
+        android:title="Random cocktail" />
 </menu>
