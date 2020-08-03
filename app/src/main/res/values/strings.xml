@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Liquorade</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="instructions">Instructions:</string>
     <string name="ingredients">Ingredients:</string>
     <string name="serving_glass">Serving Glass:</string>

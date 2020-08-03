@@ -25,7 +25,7 @@ class CategoryRepository @Inject constructor(
 
     private val scope = CoroutineScope(job + Dispatchers.IO)
 
-    val categories = listOf("Gin", "Vodka", "Bourbon", "Light rum", "Dark rum", "Triple sec", "Brandy", "Tequila", "Dry Vermouth", "Sweet Vermouth")
+    val categories = listOf("Bourbon", "Brandy", "Dark rum", "Dry Vermouth", "Gin", "Light rum", "Sweet Vermouth", "Tequila", "Triple sec", "Vodka")
 
     fun getCategories() : LiveData<List<CategoryDb>> {
         var test = MediatorLiveData<List<CategoryDb>>()
@@ -39,9 +39,10 @@ class CategoryRepository @Inject constructor(
                             categoryList.add(category)
                         }
                     }
-                    categoryDao.insert(categoryList.asDatabaseCategory())
+                    val sortedList = categoryList.sortedWith(compareBy { it.strIngredient1 })
+                    categoryDao.insert(sortedList.asDatabaseCategory())
                     withContext(Dispatchers.Main) {
-                        test.value = categoryList.asDatabaseCategory()
+                        test.value = sortedList.asDatabaseCategory()
                     }
                 } else {
                     withContext(Dispatchers.Main){
