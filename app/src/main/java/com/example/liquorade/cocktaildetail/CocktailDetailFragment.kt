@@ -49,7 +49,6 @@ class CocktailDetailFragment : Fragment() {
             viewModel.setCocktailDetails(it)
             viewModel.setIngredients(it.ingredients)
             binding.ingredientList.adapter = CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
-            Log.i("TEST", it.ingredients.entries.toList().toString())
         })
 
 

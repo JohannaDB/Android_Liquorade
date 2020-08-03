@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.liquorade.cocktail.CocktailViewModelFactory
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.network.CocktailApiService
+import com.example.liquorade.network.ConnectionChecker
 import com.example.liquorade.repository.CategoryRepository
 import com.example.liquorade.repository.CocktailRepository
 import dagger.Module
@@ -17,7 +18,7 @@ class CocktailModule {
     }
 
     @Provides
-    fun provideRepository(database: CocktailDatabase, service: CocktailApiService, context: Context): CocktailRepository {
-        return CocktailRepository(service, database.cocktailDatabaseDao, context)
+    fun provideRepository(database: CocktailDatabase, service: CocktailApiService, connectionChecker: ConnectionChecker): CocktailRepository {
+        return CocktailRepository(service, database.cocktailDatabaseDao, connectionChecker)
     }
 }
