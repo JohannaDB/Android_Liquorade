@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.liquorade.LiquoradeApplication
 import com.example.liquorade.R
+import com.example.liquorade.cocktaildetail.CocktailDetailAdapter
 import com.example.liquorade.databinding.FragmentIngredientDetailBinding
 import com.example.liquorade.databinding.FragmentRandomCocktailBinding
 import javax.inject.Inject
@@ -32,6 +34,12 @@ class RandomCocktailFragment : Fragment() {
         val binding = FragmentRandomCocktailBinding.inflate(inflater)
 
         binding.viewModel = viewModel
+
+
+        viewModel.randomCocktail.observe(viewLifecycleOwner, Observer {
+            binding.ingredientListRandom.adapter =
+                CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
+        })
 
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)

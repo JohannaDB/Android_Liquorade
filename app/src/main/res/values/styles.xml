@@ -5,6 +5,47 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/comfortaa</item>
+        <item name="fontFamily">@font/comfortaa</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="TitleStyle">
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="NavStyle">
+        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="fontFamily">@font/comfortaa_bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="IngredientListStyle">
+        <item name="backgroundColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/textOnImage</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="IngredientListItemStyle">
+        <item name="android:textColor">@color/textOnImage</item>
+    </style>
+
+    <style name="PaddingStyle">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
 </resources>

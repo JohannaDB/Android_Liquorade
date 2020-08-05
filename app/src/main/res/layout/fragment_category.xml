@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
     <data>
         <variable
             name="viewModel"
@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.liquorade.MainActivity">
+        tools:context="com.example.liquorade.MainActivity"
+        android:background="@color/colorBackground">
 
         <LinearLayout
             android:id="@+id/welcome"
@@ -22,16 +23,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Let's get started!"
-                android:textSize="26sp" />
+                android:text="@string/getStarted"
+                app:theme="@style/TitleStyle" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:text="Choose the main ingredient of your cocktail"
+                android:text="@string/chooseMain"
                 android:textSize="18sp" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
