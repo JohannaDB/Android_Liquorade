@@ -13,8 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="false"
-        android:padding="12dp">
+        android:fillViewport="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,20 +24,18 @@
                 android:id="@+id/cocktailName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingBottom="4dp"
                 android:text="@{viewModel.cocktailDetail.strDrink}"
-                android:textAlignment="center"
-                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:theme="@style/TitleStyle" />
 
             <LinearLayout
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                app:theme="@style/PaddingStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cocktailName">
@@ -51,7 +48,7 @@
                     android:paddingEnd="4dp"
                     android:paddingRight="4dp"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{viewModel.cocktailDetail.strDrinkThumb}" />
+                    app:imageUrlRounded="@{viewModel.cocktailDetail.strDrinkThumb}" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,28 +63,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/category"
-                        android:textSize="20sp" />
+                        app:theme="@style/SmallTitleStyle"/>
 
                     <TextView
                         android:id="@+id/cocktailCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.cocktailDetail.strCategory}"
-                        android:textSize="16sp" />
+                        android:paddingBottom="4dp"
+                        android:text="@{viewModel.cocktailDetail.strCategory}"/>
 
                     <TextView
                         android:id="@+id/serving"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/serving_glass"
-                        android:textSize="20sp" />
+                        app:theme="@style/SmallTitleStyle"/>
 
                     <TextView
                         android:id="@+id/servingGlass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.cocktailDetail.strGlass}"
-                        android:textSize="16sp" />
+                        android:text="@{viewModel.cocktailDetail.strGlass}"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -100,38 +96,45 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear">
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/ingredients"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ingredients"
-                    android:paddingBottom="4dp"
-                    android:textSize="20sp" />
-
-                <com.example.liquorade.util.NonScrollListView
-                    android:id="@+id/ingredientList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="4dp"
-                    android:layout_below="@+id/ingredients" />
+                    android:orientation="vertical"
+                    app:theme="@style/IngredientListStyle">
 
-                <TextView
-                    android:id="@+id/instr"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ingredients"
+                        android:textSize="20sp" />
+
+                    <com.example.liquorade.util.NonScrollListView
+                        android:id="@+id/ingredientList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ingredientList"
-                    android:paddingBottom="4dp"
-                    android:text="@string/instructions"
-                    android:textSize="20sp" />
+                    android:orientation="vertical"
+                    android:layout_below="@+id/ingredients"
+                    app:theme="@style/PaddingStyle" >
+                    <TextView
+                        android:id="@+id/instr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructions"
+                        app:theme="@style/SmallTitleStyle"/>
 
-                <TextView
-                    android:id="@+id/instructions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/instr"
-                    android:text="@{viewModel.cocktailDetail.strInstructions}"
-                    android:textSize="16sp" />
-
+                    <TextView
+                        android:id="@+id/instructions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strInstructions}"
+                        android:paddingBottom="8dp" />
+                </LinearLayout>
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

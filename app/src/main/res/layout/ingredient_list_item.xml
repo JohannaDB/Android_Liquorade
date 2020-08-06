@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="4dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:theme="@style/IngredientListItemStyle" >
         <TextView
             android:id="@+id/measurementText"
             android:layout_width="match_parent"

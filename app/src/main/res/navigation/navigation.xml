@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.liquorade.AboutFragment"
-        android:label="@string/aboutLiquorade"
+        android:label="@string/about_liquorade"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/ingredientDetailFragment"
@@ -50,4 +50,9 @@
             android:name="ingredientName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/randomCocktailFragment"
+        android:name="com.example.liquorade.randomcocktail.RandomCocktailFragment"
+        android:label="Random cocktail"
+        tools:layout="@layout/fragment_random_cocktail" />
 </navigation>

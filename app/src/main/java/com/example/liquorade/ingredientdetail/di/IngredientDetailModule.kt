@@ -16,7 +16,7 @@ class IngredientDetailModule {
     }
 
     @Provides
-    fun provideRepository(service: CocktailApiService, connectionChecker: ConnectionChecker): IngredientDetailRepository {
-        return IngredientDetailRepository(service, connectionChecker)
+    fun provideRepository(service: CocktailApiService): IngredientDetailRepository {
+        return IngredientDetailRepository(service)
     }
 }

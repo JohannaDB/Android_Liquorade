@@ -32,8 +32,8 @@ class CocktailDetailFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        (requireActivity().application as LiquoradeApplication).component.cocktailDetailComponent().create().inject(this)
+        (requireActivity().application as LiquoradeApplication).component.cocktailDetailComponent()
+            .create().inject(this)
     }
 
     override fun onCreateView(
@@ -45,12 +45,17 @@ class CocktailDetailFragment : Fragment() {
         // Giving the binding access to the CocktailDetailViewModel
         binding.viewModel = viewModel
 
-        viewModel.getCocktailDetails(args.cocktailId).observe(viewLifecycleOwner, Observer{
-            viewModel.setCocktailDetails(it)
-            viewModel.setIngredients(it.ingredients)
-            binding.ingredientList.adapter = CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
-        })
+//        viewModel.getCocktailDetails(args.cocktailId).observe(viewLifecycleOwner, Observer{
+//            viewModel.setCocktailDetails(it)
+//            viewModel.setIngredients(it.ingredients)
+//            binding.ingredientList.adapter = CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
+//        })
 
+        viewModel.getCocktailDetails(args.cocktailId)
+        viewModel.cocktailDetail.observe(viewLifecycleOwner, Observer {
+            binding.ingredientList.adapter =
+                CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
+        })
 
 
         binding.setLifecycleOwner(this)

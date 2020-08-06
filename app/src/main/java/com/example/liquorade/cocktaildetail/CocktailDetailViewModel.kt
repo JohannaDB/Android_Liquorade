@@ -4,13 +4,22 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.CocktailDetail
 import com.example.liquorade.domain.CocktailDetailNetwork
 import com.example.liquorade.repository.CocktailDetailRepository
+import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 class CocktailDetailViewModel @Inject constructor(private val detailRepo: CocktailDetailRepository) :
     ViewModel() {
+    private val _status = MutableLiveData<CocktailApiStatus>()
+
+    val status: LiveData<CocktailApiStatus>
+        get() = _status
+
     private val _cocktailDetail = MutableLiveData<CocktailDetail>()
 
     val cocktailDetail: LiveData<CocktailDetail>
@@ -24,16 +33,27 @@ class CocktailDetailViewModel @Inject constructor(private val detailRepo: Cockta
     val cocktailId: LiveData<String>
         get() = _cocktailId
 
-    fun getCocktailDetails(cocktailId: String): LiveData<CocktailDetail> {
+//    fun getCocktailDetails(cocktailId: String): LiveData<CocktailDetail> {
+//        _cocktailId.value = cocktailId
+//        return detailRepo.getCocktailDetails(cocktailId)
+//    }
+
+    fun getCocktailDetails(cocktailId: String) {
         _cocktailId.value = cocktailId
-        return detailRepo.getCocktailDetails(cocktailId)
+        viewModelScope.launch {
+            try {
+                _status.value = CocktailApiStatus.LOADING
+                val detail = detailRepo.getCocktailDetails(cocktailId)
+                _cocktailDetail.value = detail
+                _ingredients = detail.ingredients
+                _status.value = CocktailApiStatus.DONE
+            } catch (e: Exception) {
+                _status.value = CocktailApiStatus.ERROR
+            }
+        }
     }
 
-    fun setCocktailDetails(cocktaildetail: CocktailDetail) {
-        _cocktailDetail.value = cocktaildetail
-    }
-
-    fun setIngredients(ingredients: Map<String?, String?>) {
-        _ingredients = ingredients
-    }
+//    fun setCocktailDetails(cocktaildetail: CocktailDetail) {
+//        _cocktailDetail.value = cocktaildetail
+//    }
 }

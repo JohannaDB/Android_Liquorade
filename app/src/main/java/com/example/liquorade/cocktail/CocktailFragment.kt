@@ -30,7 +30,6 @@ class CocktailFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         (requireActivity().application as LiquoradeApplication).component.cocktailComponent().create().inject(this)
     }
 
@@ -59,7 +58,7 @@ class CocktailFragment : Fragment() {
         }
 
         viewModel.getCocktails(args.categoryName).observe(viewLifecycleOwner, Observer{
-            viewModel.setCocktails(it.asDomainCocktail())
+            viewModel.setCocktails(it)
         })
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment

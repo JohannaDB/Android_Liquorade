@@ -6,6 +6,7 @@ import com.example.liquorade.cocktail.di.CocktailComponent
 import com.example.liquorade.cocktaildetail.di.CocktailDetailComponent
 import com.example.liquorade.ingredientdetail.di.IngredientDetailComponent
 import com.example.liquorade.network.NetworkModule
+import com.example.liquorade.randomcocktail.di.RandomCocktailComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -20,7 +21,8 @@ interface ApplicationComponent {
     fun cocktailComponent(): CocktailComponent.Factory
     fun cocktailDetailComponent(): CocktailDetailComponent.Factory
     fun ingredientDetailComponent(): IngredientDetailComponent.Factory
+    fun randomCocktailComponent(): RandomCocktailComponent.Factory
 }
 
-@Module(subcomponents = [CategoryComponent::class, CocktailComponent::class, CocktailDetailComponent::class, IngredientDetailComponent::class])
+@Module(subcomponents = [CategoryComponent::class, CocktailComponent::class, CocktailDetailComponent::class, IngredientDetailComponent::class, RandomCocktailComponent::class])
 object Subcomponents

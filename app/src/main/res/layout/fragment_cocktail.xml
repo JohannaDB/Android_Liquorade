@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.liquorade.cocktail.CocktailViewModel" />
@@ -19,11 +18,15 @@
             android:id="@+id/infoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="learn more"
-            android:layout_margin="8dp"
+            android:text="@{`What is `+ viewModel.category_Name + `?`}"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/ButtonStyle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cocktail_grid"
