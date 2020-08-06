@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/getStarted"
+                android:text="@string/get_started"
                 android:textColor="@color/textOnImage"
                 android:gravity="left"
                 android:paddingTop="0dp"
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/chooseMain"
+                android:text="@string/choose_main"
                 android:textColor="@color/textOnImage"
                 android:textSize="18sp"
                 android:paddingLeft="8dp"

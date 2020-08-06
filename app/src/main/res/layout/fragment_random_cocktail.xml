@@ -28,11 +28,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <Button
+                    android:id="@+id/randomButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/random_cocktail"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    app:theme="@style/ButtonStyle" />
+
                 <TextView
                     android:id="@+id/randomCocktailName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.randomCocktail.strDrink}"
+                    android:paddingTop="4dp"
                     app:theme="@style/TitleStyle" />
 
                 <ImageView

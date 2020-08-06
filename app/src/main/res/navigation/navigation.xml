@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.liquorade.AboutFragment"
-        android:label="@string/aboutLiquorade"
+        android:label="@string/about_liquorade"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/ingredientDetailFragment"

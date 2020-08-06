@@ -18,7 +18,7 @@
                 android:id="@+id/aboutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/aboutLiquorade"
+                android:text="@string/about_liquorade"
                 app:theme="@style/TitleStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

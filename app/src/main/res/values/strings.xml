@@ -5,7 +5,8 @@
     <string name="serving_glass">Serving Glass:</string>
     <string name="category">Category:</string>
     <string name="about">About</string>
-    <string name="aboutLiquorade">About Liquorade</string>
-    <string name="getStarted">Let\'s get started!</string>
-    <string name="chooseMain">Choose the main ingredient of your cocktail</string>
+    <string name="about_liquorade">About Liquorade</string>
+    <string name="get_started">Let\'s get started!</string>
+    <string name="choose_main">Choose the main ingredient of your cocktail</string>
+    <string name="random_cocktail">Give me another cocktail</string>
 </resources>
