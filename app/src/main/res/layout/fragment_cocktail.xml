@@ -12,18 +12,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.liquorade.MainActivity"
-        android:paddingTop="8dp"
-        app:theme="@style/PaddingStyle">
+        tools:context="com.example.liquorade.MainActivity">
 
         <Button
             android:id="@+id/infoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{`What is `+ viewModel.category_Name + `?`}"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/ButtonStyle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cocktail_grid"
