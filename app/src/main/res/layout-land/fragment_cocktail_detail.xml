@@ -13,7 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="false">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             tools:context="com.example.liquorade.MainActivity">
 
             <TextView
-                android:id="@+id/cocktailName"
+                android:id="@+id/cocktail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.cocktailDetail.strDrink}"
@@ -31,16 +31,16 @@
                 app:theme="@style/TitleStyle" />
 
             <LinearLayout
-                android:id="@+id/linear"
+                android:id="@+id/linearlayout_cocktaildetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cocktailName">
+                app:layout_constraintTop_toBottomOf="@+id/cocktail_name">
 
                 <ImageView
-                    android:id="@+id/cocktailImage"
+                    android:id="@+id/cocktail_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/image_size"
                     android:layout_weight="1"
@@ -55,14 +55,14 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/cocktailCat"
+                        android:id="@+id/cocktail_cat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/category"
                         app:theme="@style/SmallTitleStyle"/>
 
                     <TextView
-                        android:id="@+id/cocktailCategory"
+                        android:id="@+id/cocktail_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="4dp"
@@ -76,7 +76,7 @@
                         app:theme="@style/SmallTitleStyle"/>
 
                     <TextView
-                        android:id="@+id/servingGlass"
+                        android:id="@+id/serving_glass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.cocktailDetail.strGlass}"/>
@@ -84,13 +84,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cocktailIngredients"
+                android:id="@+id/cocktail_ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear">
+                app:layout_constraintTop_toBottomOf="@+id/linearlayout_cocktaildetail">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                         app:theme="@style/SmallTitleStyle"/>
 
                     <TextView
-                        android:id="@+id/instructions"
+                        android:id="@+id/cocktail_instructions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.cocktailDetail.strInstructions}"
@@ -128,11 +128,37 @@
                         android:textSize="20sp" />
 
                     <com.example.liquorade.util.NonScrollListView
-                        android:id="@+id/ingredientList"
+                        android:id="@+id/ingredient_list"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"/>
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cocktailApiStatus="@{viewModel.status}">
+
+                <ImageView
+                    android:id="@+id/status_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/status_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 </layout>

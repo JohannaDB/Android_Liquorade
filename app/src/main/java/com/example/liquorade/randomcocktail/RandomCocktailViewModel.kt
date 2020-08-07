@@ -39,7 +39,6 @@ class RandomCocktailViewModel @Inject constructor(private val repository: Random
                 _status.value = CocktailApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = CocktailApiStatus.ERROR
-                _randomCocktail.value = null
                 Log.i("ERROR: ", e.message.toString())
             }
         }

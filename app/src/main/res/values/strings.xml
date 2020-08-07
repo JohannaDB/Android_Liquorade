@@ -9,4 +9,5 @@
     <string name="get_started">Let\'s get started!</string>
     <string name="choose_main">Choose the main ingredient of your cocktail</string>
     <string name="random_cocktail">Give me another cocktail</string>
+    <string name="no_internet">No internet connection found</string>
 </resources>

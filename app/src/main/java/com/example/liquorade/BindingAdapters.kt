@@ -13,6 +13,7 @@ import com.example.liquorade.cocktail.CocktailAdapter
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.Category
 import com.example.liquorade.domain.Cocktail
+import kotlinx.android.synthetic.main.fragment_random_cocktail.view.*
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Cocktail>?) {
@@ -59,15 +60,16 @@ fun bindImageRounded(imgView: ImageView, imgUrl: String?) {
 }
 
 @BindingAdapter("cocktailApiStatus")
-fun bindStatus(statusImageView: ImageView, status: CocktailApiStatus?) {
+fun bindStatus(statusImageView: View, status: CocktailApiStatus?) {
     when (status) {
         CocktailApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.loading_animation)
+            statusImageView.status_image.setImageResource(R.drawable.loading_animation)
         }
         CocktailApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.ic_connection_error)
+            statusImageView.status_image.setImageResource(R.drawable.ic_connection_error)
+            statusImageView.status_text.setText(R.string.no_internet)
         }
         CocktailApiStatus.DONE -> {
             statusImageView.visibility = View.GONE

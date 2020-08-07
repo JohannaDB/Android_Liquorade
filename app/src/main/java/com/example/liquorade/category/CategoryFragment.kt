@@ -57,7 +57,7 @@ class CategoryFragment : Fragment() {
         })
 
         viewModel.getCategories().observe(viewLifecycleOwner, Observer{
-            viewModel.setCategories(it.asDomainCategory())
+            viewModel.setCategories(it)
         })
 
         binding.setLifecycleOwner(this)
