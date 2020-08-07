@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.liquorade.category.CategoryViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="com.example.liquorade.MainActivity">
+
+            <LinearLayout
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:layout_width="@dimen/cocktail_image"
+                    android:layout_height="@dimen/cocktail_image"
+                    android:layout_gravity="center_vertical"
+                    android:paddingRight="8dp"
+                    android:paddingEnd="8dp"
+                    android:src="@drawable/ic_cocktail" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:paddingTop="0dp"
+                        android:text="@string/get_started"
+                        android:textColor="@color/textOnImage"
+                        app:theme="@style/TitleStyle" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/choose_main"
+                        android:textColor="@color/textOnImage"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/category_grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/welcome"
+                app:layout_constraintVertical_bias="0.0"
+                app:listCategoryData="@{viewModel.categoryList}"
+                app:spanCount="4"
+                tools:listitem="@layout/category_list_item" />
+
+            <ImageView
+                android:id="@+id/status_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cocktailApiStatus="@{viewModel.status}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

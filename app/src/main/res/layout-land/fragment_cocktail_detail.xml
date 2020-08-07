@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.liquorade.cocktaildetail.CocktailDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="com.example.liquorade.MainActivity">
+
+            <TextView
+                android:id="@+id/cocktailName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.cocktailDetail.strDrink}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:theme="@style/TitleStyle" />
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cocktailName">
+
+                <ImageView
+                    android:id="@+id/cocktailImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_size"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    app:imageUrlRounded="@{viewModel.cocktailDetail.strDrinkThumb}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:theme="@style/PaddingStyle"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/cocktailCat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/category"
+                        app:theme="@style/SmallTitleStyle"/>
+
+                    <TextView
+                        android:id="@+id/cocktailCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="4dp"
+                        android:text="@{viewModel.cocktailDetail.strCategory}"/>
+
+                    <TextView
+                        android:id="@+id/serving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/serving_glass"
+                        app:theme="@style/SmallTitleStyle"/>
+
+                    <TextView
+                        android:id="@+id/servingGlass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strGlass}"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cocktailIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    app:theme="@style/PaddingStyle" >
+                    <TextView
+                        android:id="@+id/instr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructions"
+                        app:theme="@style/SmallTitleStyle"/>
+
+                    <TextView
+                        android:id="@+id/instructions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strInstructions}"
+                        android:paddingBottom="8dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    app:theme="@style/IngredientListStyle">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ingredients"
+                        android:textSize="20sp" />
+
+                    <com.example.liquorade.util.NonScrollListView
+                        android:id="@+id/ingredientList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.liquorade.randomcocktail.RandomCocktailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/randomButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/random_cocktail"
+                    android:textAllCaps="false"
+                    app:theme="@style/ButtonStyle" />
+
+                <TextView
+                    android:id="@+id/randomCocktailName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:text="@{viewModel.randomCocktail.strDrink}"
+                    app:theme="@style/TitleStyle" />
+
+                <LinearLayout
+                    android:id="@+id/linearExtra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/randomCocktailImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/image_size"
+                        android:layout_weight="1"
+                        android:scaleType="centerCrop"
+                        app:imageUrlRounded="@{viewModel.randomCocktail.strDrinkThumb}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/randomCocktailCat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/category"
+                            android:textColor="@color/textOnImage"
+                            app:theme="@style/SmallTitleStyle" />
+
+                        <TextView
+                            android:id="@+id/randomCocktailCategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/textOnImage"
+                            android:text="@{viewModel.randomCocktail.strCategory}" />
+
+                        <TextView
+                            android:id="@+id/randomServing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/serving_glass"
+                            android:textColor="@color/textOnImage"
+                            app:theme="@style/SmallTitleStyle" />
+
+                        <TextView
+                            android:id="@+id/randomServingGlass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textColor="@color/textOnImage"
+                            android:text="@{viewModel.randomCocktail.strGlass}" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:paddingBottom="8dp"
+                    app:theme="@style/PaddingStyle">
+
+                    <TextView
+                        android:id="@+id/instrRandom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructions"
+                        app:theme="@style/SmallTitleStyle" />
+
+                    <TextView
+                        android:id="@+id/instructionsRandom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.randomCocktail.strInstructions}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    app:theme="@style/IngredientListStyle">
+
+                    <TextView
+                        android:id="@+id/randomIngredients"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ingredients"
+                        android:textSize="20sp" />
+
+                    <com.example.liquorade.util.NonScrollListView
+                        android:id="@+id/ingredientListRandom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/status_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cocktailApiStatus="@{viewModel.status}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
