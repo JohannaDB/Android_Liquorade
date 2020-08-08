@@ -43,7 +43,7 @@ class RandomCocktailFragment : Fragment() {
                 CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
         })
 
-        binding.randomButton.setOnClickListener { _ ->
+        binding.randomCocktailButton.setOnClickListener { _ ->
             viewModel.getRandomCocktail()
         }
 

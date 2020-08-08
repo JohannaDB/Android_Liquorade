@@ -8,6 +8,7 @@ import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.database.CategoryDb
 import com.example.liquorade.domain.Category
+import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.repository.CategoryRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,12 +33,23 @@ class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRe
     val navigation: LiveData<String>
         get() = _navigation
 
-    fun getCategories(): LiveData<List<CategoryDb>> {
-        return categoryRepo.getCategories()
+    fun getCategories(): LiveData<List<Category>> {
+        if (_categoryList.value == null) {
+            _status.value = CocktailApiStatus.LOADING
+            return categoryRepo.getCategories()
+        }
+        return categoryList
     }
 
     fun setCategories(categories: List<Category>) {
-        _categoryList.value = categories
+        if (_categoryList.value != categories) {
+            _categoryList.value = categories
+        }
+        if(categories.isEmpty()) {
+            _status.value = CocktailApiStatus.ERROR
+        } else {
+            _status.value = CocktailApiStatus.DONE
+        }
     }
 
     fun displayCocktails(categoryName: String) {

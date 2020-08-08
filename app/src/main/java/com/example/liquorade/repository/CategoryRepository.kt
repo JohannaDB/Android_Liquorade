@@ -5,8 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.database.CategoryDb
+import com.example.liquorade.database.asDomainCategory
+import com.example.liquorade.database.asDomainCocktail
 import com.example.liquorade.domain.Category
+import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.asDatabaseCategory
+import com.example.liquorade.domain.asDatabaseCocktail
 import com.example.liquorade.network.CocktailApiService
 import com.example.liquorade.network.ConnectionChecker
 import kotlinx.coroutines.*
@@ -24,8 +28,8 @@ class CategoryRepository @Inject constructor(
 
     val categories = listOf("Bourbon", "Brandy", "Dark rum", "Dry Vermouth", "Gin", "Light rum", "Sweet Vermouth", "Tequila", "Triple sec", "Vodka")
 
-    fun getCategories() : LiveData<List<CategoryDb>> {
-        var test = MediatorLiveData<List<CategoryDb>>()
+    fun getCategories() : LiveData<List<Category>> {
+        var test = MediatorLiveData<List<Category>>()
         scope.launch {
             try {
                 if (connectionChecker.isInternetAvailable()) {
@@ -39,13 +43,13 @@ class CategoryRepository @Inject constructor(
                     val sortedList = categoryList.sortedWith(compareBy { it.strIngredient1 })
                     categoryDao.insert(sortedList.asDatabaseCategory())
                     withContext(Dispatchers.Main) {
-                        test.value = sortedList.asDatabaseCategory()
+                        test.value = sortedList
                     }
                 } else {
                     withContext(Dispatchers.Main){
                         test.addSource(categoryDao.getAllCategories()){
                             test.removeSource(categoryDao.getAllCategories())
-                            test.value = it
+                            test.value = it.asDomainCategory()
                         }
                     }
                 }

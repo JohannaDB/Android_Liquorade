@@ -26,38 +26,38 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
                 android:orientation="horizontal"
-                android:padding="8dp"
+                android:padding="16dp"
+                android:gravity="center"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
                 <ImageView
                     android:layout_width="@dimen/cocktail_image"
                     android:layout_height="@dimen/cocktail_image"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center"
                     android:paddingRight="8dp"
                     android:paddingEnd="8dp"
-                    android:src="@drawable/ic_cocktail" />
+                    android:src="@drawable/ic_cocktail"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingTop="8dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="left"
                         android:paddingTop="0dp"
                         android:text="@string/get_started"
                         android:textColor="@color/white"
                         app:theme="@style/TitleStyle" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingBottom="8dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="16dp"
                         android:text="@string/choose_main"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -68,7 +68,7 @@
                 android:id="@+id/category_grid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
+                android:padding="16dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -76,7 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@id/welcome_text"
                 app:layout_constraintVertical_bias="0.0"
                 app:listCategoryData="@{viewModel.categoryList}"
-                app:spanCount="2"
+                app:spanCount="5"
                 tools:listitem="@layout/category_list_item" />
 
             <LinearLayout

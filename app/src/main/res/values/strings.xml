@@ -5,8 +5,12 @@
     <string name="serving_glass">Serving Glass:</string>
     <string name="category">Category:</string>
     <string name="about">About</string>
-    <string name="about_liquorade">About Liquorade</string>
+    <string name="about_title">About Liquorade</string>
+    <string name="about_liquorade">The Liquorade app is an on-the-go guide for anyone who loves a good cocktail.
+        In the app you can find a large collection of cocktails sorted by their main ingredient, but you can also let the app decide what you\'re going to drink.
+        The Liquorade app uses data from the TheCocktailDB (www.thecocktaildb.com) database.</string>
     <string name="get_started">Let\'s get started!</string>
     <string name="choose_main">Choose the main ingredient of your cocktail</string>
     <string name="random_cocktail">Give me another cocktail</string>
+    <string name="no_internet">No internet connection found</string>
 </resources>
