@@ -34,10 +34,6 @@ class IngredientDetailFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-//        viewModel.getIngredientDetails(args.ingredientName).observe(viewLifecycleOwner, Observer{
-//            viewModel.setIngredientDetails(it)
-//        })
-//
         viewModel.getIngredientDetails(args.ingredientName)
 
         binding.setLifecycleOwner(this)

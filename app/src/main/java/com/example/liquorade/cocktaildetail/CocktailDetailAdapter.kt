@@ -18,8 +18,8 @@ class CocktailDetailAdapter(context: Context, ingredientList: Int, objects: List
         var binding = IngredientListItemBinding.inflate(LayoutInflater.from(context))
         val ingredient = getItem(position)
         if(ingredient != null) {
-            binding.ingredientText.setText(ingredient?.key)
-            binding.measurementText.setText(ingredient?.value)
+            binding.ingredientListItemIngredient.setText(ingredient?.key)
+            binding.ingredientListItemMeasurement.setText(ingredient?.value)
         }
         return binding.root
     }

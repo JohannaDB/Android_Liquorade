@@ -11,17 +11,19 @@
     </data>
 
     <ScrollView
+        android:id="@+id/category_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/category_constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context="com.example.liquorade.MainActivity">
 
             <LinearLayout
-                android:id="@+id/welcome_text"
+                android:id="@+id/category_start_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
@@ -31,6 +33,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
                 <ImageView
+                    android:id="@+id/category_cocktail_icon"
                     android:layout_width="@dimen/cocktail_image"
                     android:layout_height="@dimen/cocktail_image"
                     android:layout_gravity="center_vertical"
@@ -39,12 +42,14 @@
                     android:src="@drawable/ic_cocktail" />
 
                 <LinearLayout
+                    android:id="@+id/category_start_text_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingTop="8dp">
 
                     <TextView
+                        android:id="@+id/category_start_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="left"
@@ -53,6 +58,7 @@
                         android:textColor="@color/white"
                         app:theme="@style/TitleStyle" />
                     <TextView
+                        android:id="@+id/category_start_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="8dp"
@@ -73,13 +79,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/welcome_text"
+                app:layout_constraintTop_toBottomOf="@id/category_start_container"
                 app:layout_constraintVertical_bias="0.0"
                 app:listCategoryData="@{viewModel.categoryList}"
                 app:spanCount="2"
                 tools:listitem="@layout/category_list_item" />
 
             <LinearLayout
+                android:id="@+id/status_container"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:background="@color/white"

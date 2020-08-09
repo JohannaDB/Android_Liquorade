@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/categoryFragment"
+        android:id="@+id/category_fragment"
         android:title="Categories" />
     <item
-        android:id="@+id/randomCocktailFragment"
+        android:id="@+id/random_cocktail_fragment"
         android:title="Random cocktail" />
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/about_fragment"
         android:title="@string/about" />
 </menu>

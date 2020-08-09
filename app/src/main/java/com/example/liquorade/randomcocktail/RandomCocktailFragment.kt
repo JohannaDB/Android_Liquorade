@@ -39,7 +39,7 @@ class RandomCocktailFragment : Fragment() {
 
 
         viewModel.randomCocktail.observe(viewLifecycleOwner, Observer {
-            binding.ingredientListRandom.adapter =
+            binding.randomCocktailIngredients.adapter =
                 CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
         })
 

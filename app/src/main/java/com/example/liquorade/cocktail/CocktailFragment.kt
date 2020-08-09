@@ -51,7 +51,7 @@ class CocktailFragment : Fragment() {
             }
         })
 
-        binding.infoButtonIngredient.setOnClickListener { _ ->
+        binding.cocktailInfoButton.setOnClickListener { _ ->
             if(viewModel.category_Name != "") {
                 findNavController().navigate(CocktailFragmentDirections.actionCocktailFragmentToIngredientDetailFragment(viewModel.category_Name))
             }
