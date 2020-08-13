@@ -30,7 +30,7 @@ class RandomCocktailTest {
 
     @Test
     fun randomCocktailTest() {
-        Thread.sleep(3000)
+        Thread.sleep(4000)
         val appCompatImageButton = onView(
             allOf(
                 withContentDescription("Open navigation drawer"),
@@ -70,7 +70,7 @@ class RandomCocktailTest {
 
     @Test
     fun randomCocktailRefreshTest() {
-        Thread.sleep(3000)
+        Thread.sleep(4000)
         val appCompatImageButton = onView(
             allOf(
                 withContentDescription("Open navigation drawer"),

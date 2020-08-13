@@ -31,7 +31,7 @@ class CocktailDetailTest {
 
     @Test
     fun cocktailDetailTest() {
-        Thread.sleep(3000)
+        Thread.sleep(4000)
         val recyclerView = onView(
             allOf(
                 withId(R.id.category_grid),

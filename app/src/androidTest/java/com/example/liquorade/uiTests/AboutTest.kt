@@ -29,7 +29,7 @@ class AboutTest {
 
     @Test
     fun aboutTest() {
-        Thread.sleep(3000)
+        Thread.sleep(4000)
         val overflowMenuButton = onView(
             allOf(
                 withContentDescription("More options"),
