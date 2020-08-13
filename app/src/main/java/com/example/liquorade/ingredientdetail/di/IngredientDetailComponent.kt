@@ -7,7 +7,18 @@ import dagger.Subcomponent
 interface IngredientDetailComponent{
     @Subcomponent.Factory
     interface Factory {
+        /**
+         * Creates the component
+         *
+         * @return IngredientDetailComponent
+         */
         fun create(): IngredientDetailComponent
     }
+
+    /**
+     * Allows Dagger2 to inject into this fragment
+     *
+     * @param fragment The IngredientDetailFragment
+     */
     fun inject(fragment: IngredientDetailFragment)
 }

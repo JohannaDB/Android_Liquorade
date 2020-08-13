@@ -12,11 +12,25 @@ import dagger.Provides
 @Module
 class CategoryModule {
     @Provides
+            /**
+             * Explains how the CategoryViewModelFactory is created
+             *
+             * @param repository The CategoryRepository
+             * @return The CategoryViewModelFactory
+             */
     fun provideViewModelFactory(repository: CategoryRepository) : CategoryViewModelFactory {
         return CategoryViewModelFactory(repository)
     }
 
     @Provides
+            /**
+             * Explains how the CategoryRepository is created
+             *
+             * @param database The CocktailDatabase
+             * @param service The CocktailApiService
+             * @param connectionChecker The ConnectionChecker
+             * @return The CategoryRepository
+             */
     fun provideRepository(database: CocktailDatabase, service: CocktailApiService, connectionChecker: ConnectionChecker): CategoryRepository {
         return CategoryRepository(service, database.categoryDatabaseDao, connectionChecker)
     }
