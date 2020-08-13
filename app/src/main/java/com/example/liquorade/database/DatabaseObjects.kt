@@ -18,6 +18,11 @@ data class CocktailDb(
     val categoryName: String
 )
 
+/**
+ * Maps a list of database cocktails to a list of cocktails
+ *
+ * @return List of cocktails
+ */
 fun List<CocktailDb>.asDomainCocktail(): List<Cocktail> {
     return map {
         Cocktail(
@@ -36,6 +41,11 @@ data class CategoryDb(
     val imageUrl: String = "https://www.thecocktaildb.com/images/ingredients/$strIngredient1.png"
 )
 
+/**
+ * Maps a list of database categories to a list of categories
+ *
+ * @return List of categories
+ */
 fun List<CategoryDb>.asDomainCategory(): List<Category> {
     return map {
         Category(

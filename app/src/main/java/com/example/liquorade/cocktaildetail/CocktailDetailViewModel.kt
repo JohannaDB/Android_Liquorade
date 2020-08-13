@@ -33,11 +33,11 @@ class CocktailDetailViewModel @Inject constructor(private val detailRepo: Cockta
     val cocktailId: LiveData<String>
         get() = _cocktailId
 
-//    fun getCocktailDetails(cocktailId: String): LiveData<CocktailDetail> {
-//        _cocktailId.value = cocktailId
-//        return detailRepo.getCocktailDetails(cocktailId)
-//    }
-
+    /**
+     * Gets the cocktail details from the Repository and sets the cocktailId, cocktail details and api status
+     *
+     * @param cocktailId The id of the cocktail
+     */
     fun getCocktailDetails(cocktailId: String) {
         _cocktailId.value = cocktailId
         viewModelScope.launch {
@@ -52,8 +52,4 @@ class CocktailDetailViewModel @Inject constructor(private val detailRepo: Cockta
             }
         }
     }
-
-//    fun setCocktailDetails(cocktaildetail: CocktailDetail) {
-//        _cocktailDetail.value = cocktaildetail
-//    }
 }

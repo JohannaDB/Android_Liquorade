@@ -11,6 +11,11 @@ data class Category(
     val imageUrl: String = "https://www.thecocktaildb.com/images/ingredients/$strIngredient1.png"
 )
 
+/**
+ * Maps a list of categories to a list of database categories
+ *
+ * @return List of database categories
+ */
 fun List<Category>.asDatabaseCategory(): List<CategoryDb> {
     return map {
         CategoryDb(

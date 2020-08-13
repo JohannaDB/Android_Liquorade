@@ -31,11 +31,24 @@ class CategoryFragment : Fragment() {
 
     private val viewModel by viewModels<CategoryViewModel> { viewModelFactory }
 
+    /**
+     * Method called once the fragment is associated with its activity
+     * Tell Dagger to field inject into the fragment
+     *
+     * @param context Context of the application
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (requireActivity().application as LiquoradeApplication).component.categoryComponent().create().inject(this)
     }
 
+    /**
+     * Method gets called once the fragment should inflate a view
+     *
+     * @param inflater The layoutInflater
+     * @param container The ViewGroup
+     * @param savedInstanceState The bundle created in onSaveInstanceState
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,14 +78,27 @@ class CategoryFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Specifies the options menu for an activity, the menu resource gets inflated into the menu provided in the callback
+     *
+     * @param menu The Menu callback
+     * @param inflater The MenuInflater
+     */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.overflow_menu, menu)
     }
 
+    /**
+     *
+     * Describes what should happen when a MenuItem is selected
+     *
+     * @param item The selected MenuItem
+     * @return Boolean that indicates if the event handling was successful
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item!!,
-            view!!.findNavController())
+        return NavigationUI.onNavDestinationSelected(item,
+            requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
 }

@@ -7,8 +7,18 @@ import dagger.Subcomponent
 interface CategoryComponent {
     @Subcomponent.Factory
     interface Factory {
+        /**
+         * Creates the component
+         *
+         * @return CategoryComponent
+         */
         fun create(): CategoryComponent
     }
 
+    /**
+     * Allows Dagger2 to inject into this fragment
+     *
+     * @param fragment The CategoryFragment
+     */
     fun inject(fragment: CategoryFragment)
 }

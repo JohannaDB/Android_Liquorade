@@ -10,11 +10,23 @@ import dagger.Provides
 @Module
 class CocktailDetailModule {
     @Provides
+            /**
+             * Explains how the CocktailDetailViewModelFactory is created
+             *
+             * @param repository The CocktailDetailRepository
+             * @return The CocktailDetailViewModelFactory
+             */
     fun provideViewModelFactory(repository: CocktailDetailRepository) : CocktailDetailViewModelFactory {
         return CocktailDetailViewModelFactory(repository)
     }
 
     @Provides
+            /**
+             * Explains how the CocktailDetailRepository is created
+             *
+             * @param service The CocktailApiService
+             * @return The CocktailDetailRepository
+             */
     fun provideRepository(service: CocktailApiService): CocktailDetailRepository {
         return CocktailDetailRepository(service)
     }

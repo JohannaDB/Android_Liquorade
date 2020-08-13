@@ -7,6 +7,11 @@ import android.os.Build
 import javax.inject.Inject
 
 class ConnectionChecker @Inject constructor(private val connectivityManager: ConnectivityManager) {
+    /**
+     * Checks if there is an internet connection
+     *
+     * @return Boolean, true if there is an internet connection, false if not
+     */
     fun isInternetAvailable(): Boolean {
         var result = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

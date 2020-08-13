@@ -7,7 +7,18 @@ import dagger.Subcomponent
 interface RandomCocktailComponent {
     @Subcomponent.Factory
     interface Factory {
+        /**
+         * Creates the component
+         *
+         * @return RandomCocktailComponent
+         */
         fun create(): RandomCocktailComponent
     }
+
+    /**
+     * Allows Dagger2 to inject into this fragment
+     *
+     * @param fragment The RandomCocktailFragment
+     */
     fun inject(fragment: RandomCocktailFragment)
 }
