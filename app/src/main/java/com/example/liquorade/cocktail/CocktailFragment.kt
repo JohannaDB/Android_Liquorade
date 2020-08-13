@@ -28,11 +28,24 @@ class CocktailFragment : Fragment() {
 
     private val args: CocktailFragmentArgs by navArgs()
 
+    /**
+     * Method called once the fragment is associated with its activity
+     * Tell Dagger to field inject into the fragment
+     *
+     * @param context Context of the application
+     */
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (requireActivity().application as LiquoradeApplication).component.cocktailComponent().create().inject(this)
     }
 
+    /**
+     * Method gets called once the fragment should inflate a view
+     *
+     * @param inflater The layoutInflater
+     * @param container The ViewGroup
+     * @param savedInstanceState The bundle created in onSaveInstanceState
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = FragmentCocktailBinding.inflate(inflater)

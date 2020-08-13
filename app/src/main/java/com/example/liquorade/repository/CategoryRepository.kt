@@ -28,6 +28,12 @@ class CategoryRepository @Inject constructor(
 
     val categories = listOf("Bourbon", "Brandy", "Dark rum", "Dry Vermouth", "Gin", "Light rum", "Sweet Vermouth", "Tequila", "Triple sec", "Vodka")
 
+    /**
+     * Gets a list of categories from the back-end or from the local database, depending on the internet status
+     * Unnecessary categories are filtered out of the back-end
+     *
+     * @return LiveData list of categories
+     */
     fun getCategories() : LiveData<List<Category>> {
         var test = MediatorLiveData<List<Category>>()
         scope.launch {

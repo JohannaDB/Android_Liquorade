@@ -70,6 +70,11 @@ data class CocktailDetailNetwork(
     val strMeasure15: String? = ""
 )
 
+/**
+ * Maps a list of cocktails to a list of database cocktails
+ *
+ * @return List of database cocktails
+ */
 fun List<Cocktail>.asDatabaseCocktail(categoryName: String): List<CocktailDb> {
     return map {
         CocktailDb(

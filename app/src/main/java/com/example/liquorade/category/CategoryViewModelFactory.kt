@@ -9,6 +9,12 @@ import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.repository.CategoryRepository
 
 class CategoryViewModelFactory(private val categoryRepo: CategoryRepository) : ViewModelProvider.Factory {
+    /**
+     * Creates a ViewModel
+     *
+     * @param modelClass Class to make the ViewModel from
+     * @return The ViewModel
+     */
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
             return CategoryViewModel(categoryRepo) as T

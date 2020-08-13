@@ -33,6 +33,11 @@ class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRe
     val navigation: LiveData<String>
         get() = _navigation
 
+    /**
+     * Gets the list of categories from the Repository and sets the api status to LOADING
+     *
+     * @return LiveData list of categories
+     */
     fun getCategories(): LiveData<List<Category>> {
         if (_categoryList.value == null) {
             _status.value = CocktailApiStatus.LOADING
@@ -41,6 +46,12 @@ class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRe
         return categoryList
     }
 
+    /**
+     * Sets the categoryList to the given list of categories
+     * If the list is empty, the api status is set to ERROR, otherwise to DONE
+     *
+     * @param categories List of categories
+     */
     fun setCategories(categories: List<Category>) {
         if (_categoryList.value != categories) {
             _categoryList.value = categories
@@ -52,10 +63,18 @@ class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRe
         }
     }
 
+    /**
+     * Sets the navigation value to the name of selected category
+     *
+     * @param categoryName The name of the selected category
+     */
     fun displayCocktails(categoryName: String) {
         _navigation.value = categoryName
     }
 
+    /**
+     * Method gets called when the navigation is completed
+     */
     fun navigationComplete() {
         _navigation.value = null
     }

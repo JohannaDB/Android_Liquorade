@@ -1,13 +1,20 @@
-package com.example.liquorade
+package com.example.liquorade.about
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.liquorade.R
 
 class AboutFragment : Fragment() {
-
+    /**
+     * Method gets called once the fragment should inflate a view
+     *
+     * @param inflater The layoutInflater
+     * @param container The ViewGroup
+     * @param savedInstanceState The bundle created in onSaveInstanceState
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

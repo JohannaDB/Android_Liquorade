@@ -8,8 +8,15 @@ import com.squareup.moshi.ToJson
 import java.lang.UnsupportedOperationException
 
 class DetailAdapter {
+
     @Annotation
     @FromJson
+            /**
+             * Converts the received JSON to a CocktailDetail object where the ingredients are mapped
+             *
+             * @param jsonString The JSON received from the back-end
+             * @return New CocktailDetail
+             */
     fun fromJson(jsonString: CocktailDetails): CocktailDetail {
         val map = mutableMapOf<String?, String?>()
         val drinks = jsonString.drinks[0]

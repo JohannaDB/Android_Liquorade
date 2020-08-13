@@ -25,6 +25,12 @@ class CocktailRepository @Inject constructor(
 
     private val scope = CoroutineScope(job + Dispatchers.IO)
 
+    /**
+     * Gets a list of cocktails from the back-end or from the local database, depending on the internet status
+     *
+     * @param categoryName is the specified category name of the cocktails
+     * @return LiveData list of cocktails
+     */
     fun getCocktails(categoryName: String) : LiveData<List<Cocktail>> {
         var test = MediatorLiveData<List<Cocktail>>()
         scope.launch {

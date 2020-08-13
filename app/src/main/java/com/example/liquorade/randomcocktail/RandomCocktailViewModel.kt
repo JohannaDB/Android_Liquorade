@@ -1,15 +1,12 @@
 package com.example.liquorade.randomcocktail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.CocktailDetail
 import com.example.liquorade.repository.RandomCocktailRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,22 +21,21 @@ class RandomCocktailViewModel @Inject constructor(private val repository: Random
     val randomCocktail: LiveData<CocktailDetail>
         get() = _randomCocktail
 
-    private var viewModelJob = Job()
-    private val scope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
     init {
         getRandomCocktail()
     }
 
+    /**
+     * Gets the random cocktail details from the Repository and sets the random cocktail details and api status
+     */
     fun getRandomCocktail() {
-        scope.launch {
+        viewModelScope.launch {
             try {
                 _status.value = CocktailApiStatus.LOADING
                 _randomCocktail.value = repository.getRandomCocktail()
                 _status.value = CocktailApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = CocktailApiStatus.ERROR
-                Log.i("ERROR: ", e.message.toString())
             }
         }
     }
