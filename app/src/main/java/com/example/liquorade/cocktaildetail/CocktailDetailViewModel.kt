@@ -1,16 +1,13 @@
 package com.example.liquorade.cocktaildetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.CocktailDetail
-import com.example.liquorade.domain.CocktailDetailNetwork
 import com.example.liquorade.repository.CocktailDetailRepository
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 class CocktailDetailViewModel @Inject constructor(private val detailRepo: CocktailDetailRepository) :

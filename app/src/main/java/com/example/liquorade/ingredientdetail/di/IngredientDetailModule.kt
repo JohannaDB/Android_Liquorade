@@ -2,8 +2,6 @@ package com.example.liquorade.ingredientdetail.di
 
 import com.example.liquorade.ingredientdetail.IngredientDetailViewModelFactory
 import com.example.liquorade.network.CocktailApiService
-import com.example.liquorade.network.ConnectionChecker
-import com.example.liquorade.repository.CocktailDetailRepository
 import com.example.liquorade.repository.IngredientDetailRepository
 import dagger.Module
 import dagger.Provides

@@ -8,7 +8,10 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.liquorade.database.*
-import com.example.liquorade.domain.*
+import com.example.liquorade.domain.Category
+import com.example.liquorade.domain.Cocktail
+import com.example.liquorade.domain.asDatabaseCategory
+import com.example.liquorade.domain.asDatabaseCocktail
 import org.junit.*
 import org.junit.runner.RunWith
 import java.io.IOException

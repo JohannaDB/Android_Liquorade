@@ -2,7 +2,6 @@ package com.example.liquorade.randomcocktail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.liquorade.ingredientdetail.IngredientDetailViewModel
 import com.example.liquorade.repository.RandomCocktailRepository
 
 class RandomCocktailViewModelFactory(private val repository: RandomCocktailRepository): ViewModelProvider.Factory {

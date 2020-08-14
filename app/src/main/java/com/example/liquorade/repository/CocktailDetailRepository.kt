@@ -1,12 +1,8 @@
 package com.example.liquorade.repository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import com.example.liquorade.domain.CocktailDetail
 import com.example.liquorade.network.CocktailApiService
-import com.example.liquorade.network.ConnectionChecker
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CocktailDetailRepository @Inject constructor(

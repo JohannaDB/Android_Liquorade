@@ -5,7 +5,6 @@ import com.example.liquorade.domain.CocktailDetails
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonQualifier
 import com.squareup.moshi.ToJson
-import java.lang.UnsupportedOperationException
 
 class DetailAdapter {
 

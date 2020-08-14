@@ -1,6 +1,5 @@
 package com.example.liquorade.category.di
 
-import android.content.Context
 import com.example.liquorade.category.CategoryViewModelFactory
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.network.CocktailApiService

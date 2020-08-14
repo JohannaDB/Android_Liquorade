@@ -2,7 +2,6 @@ package com.example.liquorade.util
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View.MeasureSpec
 import android.view.ViewGroup
 import android.widget.ListView
 

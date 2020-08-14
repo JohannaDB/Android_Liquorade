@@ -8,7 +8,6 @@ import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.IngredientDetail
 import com.example.liquorade.repository.IngredientDetailRepository
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 class IngredientDetailViewModel @Inject constructor(private val ingredientRepo: IngredientDetailRepository): ViewModel() {

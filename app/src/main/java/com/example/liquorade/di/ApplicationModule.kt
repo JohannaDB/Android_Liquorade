@@ -5,7 +5,6 @@ import android.net.ConnectivityManager
 import androidx.room.Room
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.network.ConnectionChecker
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 

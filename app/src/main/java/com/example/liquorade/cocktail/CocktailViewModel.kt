@@ -1,21 +1,10 @@
 package com.example.liquorade.cocktail
 
-import android.app.Application
-import android.util.Log
-import android.view.View
-import androidx.lifecycle.*
-import com.example.liquorade.database.CategoryDb
-import com.example.liquorade.database.CocktailDatabaseDao
-import com.example.liquorade.database.CocktailDb
-import com.example.liquorade.domain.Category
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.liquorade.domain.Cocktail
-import com.example.liquorade.domain.CocktailList
 import com.example.liquorade.repository.CocktailRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 enum class CocktailApiStatus { LOADING, ERROR, DONE }

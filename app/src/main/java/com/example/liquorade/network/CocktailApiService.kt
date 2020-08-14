@@ -1,13 +1,10 @@
 package com.example.liquorade.network
 
-import com.example.liquorade.domain.*
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import com.example.liquorade.domain.CategoryList
+import com.example.liquorade.domain.CocktailDetail
+import com.example.liquorade.domain.CocktailList
+import com.example.liquorade.domain.IngredientDetails
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CocktailApiService {

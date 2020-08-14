@@ -1,18 +1,11 @@
 package com.example.liquorade.category
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.liquorade.cocktail.CocktailApiStatus
-import com.example.liquorade.database.CategoryDatabaseDao
-import com.example.liquorade.database.CategoryDb
 import com.example.liquorade.domain.Category
-import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.repository.CategoryRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRepository) : ViewModel() {

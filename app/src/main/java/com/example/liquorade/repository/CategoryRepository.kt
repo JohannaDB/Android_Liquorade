@@ -4,13 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CategoryDatabaseDao
-import com.example.liquorade.database.CategoryDb
 import com.example.liquorade.database.asDomainCategory
-import com.example.liquorade.database.asDomainCocktail
 import com.example.liquorade.domain.Category
-import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.asDatabaseCategory
-import com.example.liquorade.domain.asDatabaseCocktail
 import com.example.liquorade.network.CocktailApiService
 import com.example.liquorade.network.ConnectionChecker
 import kotlinx.coroutines.*
@@ -35,7 +31,7 @@ class CategoryRepository @Inject constructor(
      * @return LiveData list of categories
      */
     fun getCategories() : LiveData<List<Category>> {
-        var test = MediatorLiveData<List<Category>>()
+        var categoryData = MediatorLiveData<List<Category>>()
         scope.launch {
             try {
                 if (connectionChecker.isInternetAvailable()) {
@@ -49,13 +45,13 @@ class CategoryRepository @Inject constructor(
                     val sortedList = categoryList.sortedWith(compareBy { it.strIngredient1 })
                     categoryDao.insert(sortedList.asDatabaseCategory())
                     withContext(Dispatchers.Main) {
-                        test.value = sortedList
+                        categoryData.value = sortedList
                     }
                 } else {
                     withContext(Dispatchers.Main){
-                        test.addSource(categoryDao.getAllCategories()){
-                            test.removeSource(categoryDao.getAllCategories())
-                            test.value = it.asDomainCategory()
+                        categoryData.addSource(categoryDao.getAllCategories()){
+                            categoryData.removeSource(categoryDao.getAllCategories())
+                            categoryData.value = it.asDomainCategory()
                         }
                     }
                 }
@@ -63,6 +59,6 @@ class CategoryRepository @Inject constructor(
                 Log.i("ERROR", e.message.toString())
             }
         }
-        return test
+        return categoryData
     }
 }
