@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">200dp</dimen>
+    <dimen name="image_size_tablet">400dp</dimen>
+    <dimen name="cocktail_image">80dp</dimen>
+</resources>

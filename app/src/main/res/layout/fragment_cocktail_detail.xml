@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.liquorade.cocktaildetail.CocktailDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/cocktail_detail_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cocktail_detail_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cocktail_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.cocktailDetail.strDrink}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:theme="@style/TitleStyle" />
+
+            <LinearLayout
+                android:id="@+id/cocktail_detail_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:theme="@style/PaddingStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cocktail_detail_name">
+
+                <ImageView
+                    android:id="@+id/cocktail_detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:paddingEnd="4dp"
+                    android:paddingRight="4dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrlRounded="@{viewModel.cocktailDetail.strDrinkThumb}" />
+
+                <LinearLayout
+                    android:id="@+id/cocktail_detail_info_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="4dp"
+                    android:paddingLeft="4dp">
+
+                    <TextView
+                        android:id="@+id/cocktail_detail_category_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/category"
+                        app:theme="@style/SmallTitleStyle"/>
+
+                    <TextView
+                        android:id="@+id/cocktail_detail_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="4dp"
+                        android:text="@{viewModel.cocktailDetail.strCategory}"/>
+
+                    <TextView
+                        android:id="@+id/cocktail_detail_glass_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/serving_glass"
+                        app:theme="@style/SmallTitleStyle"/>
+
+                    <TextView
+                        android:id="@+id/cocktail_detail_glass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strGlass}"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/cocktail_detail_information_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cocktail_detail_container">
+
+                <LinearLayout
+                    android:id="@+id/cocktail_detail_ingredients_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:theme="@style/IngredientListStyle">
+
+                    <TextView
+                        android:id="@+id/cocktail_detail_ingredients_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ingredients"
+                        android:textSize="20sp" />
+
+                    <com.example.liquorade.util.NonScrollListView
+                        android:id="@+id/cocktail_detail_ingredient_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cocktail_detail_instructions_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/cocktail_detail_ingredients_container"
+                    app:theme="@style/PaddingStyle" >
+                    <TextView
+                        android:id="@+id/cocktail_detail_instructions_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructions"
+                        app:theme="@style/SmallTitleStyle"/>
+
+                    <TextView
+                        android:id="@+id/cocktail_detail_instructions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cocktailDetail.strInstructions}"
+                        android:paddingBottom="8dp" />
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/status_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cocktailApiStatus="@{viewModel.status}">
+
+                <ImageView
+                    android:id="@+id/status_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/status_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

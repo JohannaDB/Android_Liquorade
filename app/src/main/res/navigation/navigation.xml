@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/category_fragment">
+    <fragment
+        android:id="@+id/category_fragment"
+        android:name="com.example.liquorade.category.CategoryFragment"
+        android:label="Liquorade"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_cocktailFragment"
+            app:destination="@id/cocktail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cocktail_fragment"
+        android:name="com.example.liquorade.cocktail.CocktailFragment"
+        android:label="{categoryName} cocktails"
+        tools:layout="@layout/fragment_cocktail">
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_cocktailFragment_to_cocktailDetailFragment"
+            app:destination="@id/cocktail_detail_fragment" />
+        <action
+            android:id="@+id/action_cocktailFragment_to_ingredientDetailFragment"
+            app:destination="@id/ingredient_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cocktail_detail_fragment"
+        android:name="com.example.liquorade.cocktaildetail.CocktailDetailFragment"
+        android:label="Cocktail details">
+        <argument
+            android:name="cocktailId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/about_fragment"
+        android:name="com.example.liquorade.about.AboutFragment"
+        android:label="@string/about_title"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/ingredient_detail_fragment"
+        android:name="com.example.liquorade.ingredientdetail.IngredientDetailFragment"
+        android:label="{ingredientName}"
+        tools:layout="@layout/fragment_ingredient_detail">
+        <argument
+            android:name="ingredientName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/random_cocktail_fragment"
+        android:name="com.example.liquorade.randomcocktail.RandomCocktailFragment"
+        android:label="Random cocktail"
+        tools:layout="@layout/fragment_random_cocktail" />
+</navigation>
