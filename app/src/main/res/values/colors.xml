@@ -3,7 +3,6 @@
     <color name="colorPrimary">#c93c2c</color>
     <color name="colorPrimaryDark">#8f2b1f</color>
     <color name="colorAccent">#89acd6</color>
-    <color name="colorBackground">#FFFFFF</color>
     <color name="imageOverlay">#22000000</color>
     <color name="white">#FFFFFF</color>
 </resources>
