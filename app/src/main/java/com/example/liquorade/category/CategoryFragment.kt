@@ -2,7 +2,12 @@ package com.example.liquorade.category
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -40,7 +45,8 @@ class CategoryFragment : Fragment() {
      * @param savedInstanceState The bundle created in onSaveInstanceState
      */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCategoryBinding.inflate(inflater)
@@ -51,17 +57,23 @@ class CategoryFragment : Fragment() {
         // Sets the adapter of the categoryGrid RecyclerView
         binding.categoryGrid.adapter =
             CategoryAdapter(OnClickListener { viewModel.displayCocktails(it) })
-        viewModel.navigation.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                this.findNavController()
-                    .navigate(CategoryFragmentDirections.actionCategoryFragmentToCocktailFragment(it))
-                viewModel.navigationComplete()
+        viewModel.navigation.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it != null) {
+                    this.findNavController()
+                        .navigate(CategoryFragmentDirections.actionCategoryFragmentToCocktailFragment(it))
+                    viewModel.navigationComplete()
+                }
             }
-        })
+        )
 
-        viewModel.getCategories().observe(viewLifecycleOwner, Observer{
-            viewModel.setCategories(it)
-        })
+        viewModel.getCategories().observe(
+            viewLifecycleOwner,
+            Observer {
+                viewModel.setCategories(it)
+            }
+        )
 
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
@@ -87,8 +99,10 @@ class CategoryFragment : Fragment() {
      * @return Boolean that indicates if the event handling was successful
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item,
-            requireView().findNavController())
-                || super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        ) ||
+            super.onOptionsItemSelected(item)
     }
 }

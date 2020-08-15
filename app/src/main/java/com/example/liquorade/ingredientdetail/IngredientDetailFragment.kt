@@ -39,7 +39,8 @@ class IngredientDetailFragment : Fragment() {
      * @param savedInstanceState The bundle created in onSaveInstanceState
      */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentIngredientDetailBinding.inflate(inflater)

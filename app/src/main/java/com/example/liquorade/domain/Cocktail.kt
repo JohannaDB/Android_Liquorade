@@ -81,6 +81,7 @@ fun List<Cocktail>.asDatabaseCocktail(categoryName: String): List<CocktailDb> {
             idDrink = it.idDrink,
             strDrink = it.strDrink,
             strDrinkThumb = it.strDrinkThumb,
-            categoryName = categoryName)
+            categoryName = categoryName
+        )
     }
 }

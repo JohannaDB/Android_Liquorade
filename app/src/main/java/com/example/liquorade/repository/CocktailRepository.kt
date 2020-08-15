@@ -8,7 +8,11 @@ import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.asDatabaseCocktail
 import com.example.liquorade.network.CocktailApiService
 import com.example.liquorade.network.ConnectionChecker
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CocktailRepository @Inject constructor(
@@ -26,23 +30,23 @@ class CocktailRepository @Inject constructor(
      * @param categoryName is the specified category name of the cocktails
      * @return LiveData list of cocktails
      */
-    fun getCocktails(categoryName: String) : LiveData<List<Cocktail>> {
+    fun getCocktails(categoryName: String): LiveData<List<Cocktail>> {
         var cocktailData = MediatorLiveData<List<Cocktail>>()
         scope.launch {
-                if (connectionChecker.isInternetAvailable()) {
-                    val cocktailList = service.getCocktails(categoryName)
-                    cocktailDao.insert(cocktailList.drinks.asDatabaseCocktail(categoryName))
-                    withContext(Dispatchers.Main) {
-                        cocktailData.value = cocktailList.drinks
-                    }
-                } else {
-                    withContext(Dispatchers.Main){
-                        cocktailData.addSource(cocktailDao.getCocktails(categoryName)){
-                            cocktailData.removeSource(cocktailDao.getCocktails(categoryName))
-                            cocktailData.value = it.asDomainCocktail()
-                        }
+            if (connectionChecker.isInternetAvailable()) {
+                val cocktailList = service.getCocktails(categoryName)
+                cocktailDao.insert(cocktailList.drinks.asDatabaseCocktail(categoryName))
+                withContext(Dispatchers.Main) {
+                    cocktailData.value = cocktailList.drinks
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    cocktailData.addSource(cocktailDao.getCocktails(categoryName)) {
+                        cocktailData.removeSource(cocktailDao.getCocktails(categoryName))
+                        cocktailData.value = it.asDomainCocktail()
                     }
                 }
+            }
         }
         return cocktailData
     }

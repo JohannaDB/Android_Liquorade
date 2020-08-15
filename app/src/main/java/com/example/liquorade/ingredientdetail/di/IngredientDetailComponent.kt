@@ -4,7 +4,7 @@ import com.example.liquorade.ingredientdetail.IngredientDetailFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [IngredientDetailModule::class])
-interface IngredientDetailComponent{
+interface IngredientDetailComponent {
     @Subcomponent.Factory
     interface Factory {
         /**

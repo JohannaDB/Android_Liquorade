@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.liquorade.databinding.IngredientListItemBinding
 
-
 class CocktailDetailAdapter(context: Context, ingredientList: Int, objects: List<Map.Entry<String?, String?>>) : ArrayAdapter<Map.Entry<String?, String?>>(context, ingredientList, objects) {
     val allItems = objects
     /**
@@ -21,7 +20,7 @@ class CocktailDetailAdapter(context: Context, ingredientList: Int, objects: List
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var binding = IngredientListItemBinding.inflate(LayoutInflater.from(context))
         val ingredient = getItem(position)
-        if(ingredient != null) {
+        if (ingredient != null) {
             binding.ingredientListItemIngredient.setText(ingredient?.key)
             binding.ingredientListItemMeasurement.setText(ingredient?.value)
         }

@@ -39,7 +39,8 @@ class RandomCocktailFragment : Fragment() {
      * @param savedInstanceState The bundle created in onSaveInstanceState
      */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
@@ -47,11 +48,13 @@ class RandomCocktailFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-
-        viewModel.randomCocktail.observe(viewLifecycleOwner, Observer {
-            binding.randomCocktailIngredients.adapter =
-                CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
-        })
+        viewModel.randomCocktail.observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.randomCocktailIngredients.adapter =
+                    CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
+            }
+        )
 
         binding.randomCocktailButton.setOnClickListener { _ ->
             viewModel.getRandomCocktail()

@@ -49,7 +49,7 @@ class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRe
         if (_categoryList.value != categories) {
             _categoryList.value = categories
         }
-        if(categories.isEmpty()) {
+        if (categories.isEmpty()) {
             _status.value = CocktailApiStatus.ERROR
         } else {
             _status.value = CocktailApiStatus.DONE

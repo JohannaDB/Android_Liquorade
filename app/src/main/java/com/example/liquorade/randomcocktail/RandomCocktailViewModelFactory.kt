@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.liquorade.repository.RandomCocktailRepository
 
-class RandomCocktailViewModelFactory(private val repository: RandomCocktailRepository): ViewModelProvider.Factory {
+class RandomCocktailViewModelFactory(private val repository: RandomCocktailRepository) : ViewModelProvider.Factory {
     /**
      * Creates a ViewModel
      *
