@@ -31,7 +31,7 @@ class CocktailRepository @Inject constructor(
      * @return LiveData list of cocktails
      */
     fun getCocktails(categoryName: String): LiveData<List<Cocktail>> {
-        var cocktailData = MediatorLiveData<List<Cocktail>>()
+        val cocktailData = MediatorLiveData<List<Cocktail>>()
         scope.launch {
             if (connectionChecker.isInternetAvailable()) {
                 val cocktailList = service.getCocktails(categoryName)

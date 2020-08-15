@@ -1,6 +1,5 @@
 package com.example.liquorade.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.example.liquorade.database.CategoryDatabaseDao
@@ -34,32 +33,28 @@ class CategoryRepository @Inject constructor(
      * @return LiveData list of categories
      */
     fun getCategories(): LiveData<List<Category>> {
-        var categoryData = MediatorLiveData<List<Category>>()
+        val categoryData = MediatorLiveData<List<Category>>()
         scope.launch {
-            try {
-                if (connectionChecker.isInternetAvailable()) {
-                    val temporaryCategoryList = service.getCategories()
-                    val categoryList = ArrayList<Category>()
-                    temporaryCategoryList.drinks.forEach { category ->
-                        if (categories.contains(category.strIngredient1)) {
-                            categoryList.add(category)
-                        }
-                    }
-                    val sortedList = categoryList.sortedWith(compareBy { it.strIngredient1 })
-                    categoryDao.insert(sortedList.asDatabaseCategory())
-                    withContext(Dispatchers.Main) {
-                        categoryData.value = sortedList
-                    }
-                } else {
-                    withContext(Dispatchers.Main) {
-                        categoryData.addSource(categoryDao.getAllCategories()) {
-                            categoryData.removeSource(categoryDao.getAllCategories())
-                            categoryData.value = it.asDomainCategory()
-                        }
+            if (connectionChecker.isInternetAvailable()) {
+                val temporaryCategoryList = service.getCategories()
+                val categoryList = ArrayList<Category>()
+                temporaryCategoryList.drinks.forEach { category ->
+                    if (categories.contains(category.strIngredient1)) {
+                        categoryList.add(category)
                     }
                 }
-            } catch (e: Exception) {
-                Log.i("ERROR", e.message.toString())
+                val sortedList = categoryList.sortedWith(compareBy { it.strIngredient1 })
+                categoryDao.insert(sortedList.asDatabaseCategory())
+                withContext(Dispatchers.Main) {
+                    categoryData.value = sortedList
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    categoryData.addSource(categoryDao.getAllCategories()) {
+                        categoryData.removeSource(categoryDao.getAllCategories())
+                        categoryData.value = it.asDomainCategory()
+                    }
+                }
             }
         }
         return categoryData
