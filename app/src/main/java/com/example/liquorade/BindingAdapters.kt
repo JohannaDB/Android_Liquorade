@@ -1,7 +1,9 @@
 package com.example.liquorade
 
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -16,36 +18,36 @@ import com.example.liquorade.domain.Cocktail
 import kotlinx.android.synthetic.main.fragment_random_cocktail.view.*
 
 @BindingAdapter("listData")
-        /**
-         * Binds the list of cocktails to the RecyclerView
-         *
-         * @param recyclerView The RecyclerView
-         * @param data List of cocktails
-         */
+/**
+ * Binds the list of cocktails to the RecyclerView
+ *
+ * @param recyclerView The RecyclerView
+ * @param data List of cocktails
+ */
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Cocktail>?) {
     val adapter = recyclerView.adapter as CocktailAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("listCategoryData")
-        /**
-         * Binds the list of categories to the RecyclerView
-         *
-         * @param recyclerView The RecyclerView
-         * @param data List of categories
-         */
+/**
+ * Binds the list of categories to the RecyclerView
+ *
+ * @param recyclerView The RecyclerView
+ * @param data List of categories
+ */
 fun bindRecyclerViewCategory(recyclerView: RecyclerView, data: List<Category>?) {
     val adapter = recyclerView.adapter as CategoryAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("imageUrl")
-        /**
-         * Uses the Glide library to load an image by URL into an [ImageView]
-         *
-         * @param imgView The ImageView
-         * @param imgUrl The image url
-         */
+/**
+ * Uses the Glide library to load an image by URL into an [ImageView]
+ *
+ * @param imgView The ImageView
+ * @param imgUrl The image url
+ */
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
@@ -53,19 +55,20 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(imgUri)
             .apply(
                 RequestOptions()
-                .placeholder(R.drawable.loading_animation)
-                .error(R.drawable.ic_broken_image))
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imgView)
     }
 }
 
 @BindingAdapter("imageUrlRounded")
-        /**
-         * Uses the Glide library to load an image by URL into an [ImageView], rounds the image
-         *
-         * @param imgView The ImageView
-         * @param imgUrl The image url
-         */
+/**
+ * Uses the Glide library to load an image by URL into an [ImageView], rounds the image
+ *
+ * @param imgView The ImageView
+ * @param imgUrl The image url
+ */
 fun bindImageRounded(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
@@ -75,18 +78,24 @@ fun bindImageRounded(imgView: ImageView, imgUrl: String?) {
                 RequestOptions()
                     .transform(RoundedCorners(50))
                     .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
+                    .error(R.drawable.ic_broken_image)
+            )
             .into(imgView)
     }
 }
 
+@BindingAdapter("ingredientInfo")
+fun bindIngredientInfo(buttonText: Button, ingredientName: String?) {
+    buttonText.text = "What is $ingredientName ?"
+}
+
 @BindingAdapter("cocktailApiStatus")
-        /**
-         * Binds the api status
-         *
-         * @param statusImageView The ImageView
-         * @param status The api status
-         */
+/**
+ * Binds the api status
+ *
+ * @param statusImageView The ImageView
+ * @param status The api status
+ */
 fun bindStatus(statusImageView: View, status: CocktailApiStatus?) {
     when (status) {
         CocktailApiStatus.LOADING -> {

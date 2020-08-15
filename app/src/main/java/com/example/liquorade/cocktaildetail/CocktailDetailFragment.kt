@@ -42,7 +42,8 @@ class CocktailDetailFragment : Fragment() {
      * @param savedInstanceState The bundle created in onSaveInstanceState
      */
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCocktailDetailBinding.inflate(inflater)
@@ -51,11 +52,13 @@ class CocktailDetailFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.getCocktailDetails(args.cocktailId)
-        viewModel.cocktailDetail.observe(viewLifecycleOwner, Observer {
-            binding.cocktailDetailIngredientList.adapter =
-                CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
-        })
-
+        viewModel.cocktailDetail.observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.cocktailDetailIngredientList.adapter =
+                    CocktailDetailAdapter(requireContext(), R.layout.ingredient_list_item, it.ingredients.entries.toList())
+            }
+        )
 
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)

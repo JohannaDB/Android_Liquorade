@@ -20,6 +20,7 @@ fun List<Category>.asDatabaseCategory(): List<CategoryDb> {
     return map {
         CategoryDb(
             strIngredient1 = it.strIngredient1,
-            imageUrl = it.imageUrl)
+            imageUrl = it.imageUrl
+        )
     }
 }

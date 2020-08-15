@@ -41,33 +41,42 @@ class CocktailFragment : Fragment() {
      * @param container The ViewGroup
      * @param savedInstanceState The bundle created in onSaveInstanceState
      */
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val binding = FragmentCocktailBinding.inflate(inflater)
 
         // Giving the binding access to the CocktailViewModel
         binding.viewModel = viewModel
 
         // Sets the adapter of the cocktailGrid RecyclerView
-        binding.cocktailGrid.adapter = CocktailAdapter( OnClickListener { viewModel.displayCocktailDetails(it) })
+        binding.cocktailGrid.adapter = CocktailAdapter(OnClickListener { viewModel.displayCocktailDetails(it) })
 
-        viewModel.navigation.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                this.findNavController()
-                    .navigate(CocktailFragmentDirections.actionCocktailFragmentToCocktailDetailFragment(it))
-                viewModel.navigationComplete()
+        viewModel.navigation.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (it != null) {
+                    this.findNavController()
+                        .navigate(CocktailFragmentDirections.actionCocktailFragmentToCocktailDetailFragment(it))
+                    viewModel.navigationComplete()
+                }
             }
-        })
+        )
 
         binding.cocktailInfoButton.setOnClickListener { _ ->
-            if(viewModel.category_Name != "") {
+            if (viewModel.category_Name != "") {
                 findNavController().navigate(CocktailFragmentDirections.actionCocktailFragmentToIngredientDetailFragment(viewModel.category_Name))
             }
         }
 
-        viewModel.getCocktails(args.categoryName).observe(viewLifecycleOwner, Observer{
-            viewModel.setCocktails(it)
-        })
+        viewModel.getCocktails(args.categoryName).observe(
+            viewLifecycleOwner,
+            Observer {
+                viewModel.setCocktails(it)
+            }
+        )
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)

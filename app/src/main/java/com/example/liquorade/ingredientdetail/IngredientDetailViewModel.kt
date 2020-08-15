@@ -10,7 +10,7 @@ import com.example.liquorade.repository.IngredientDetailRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class IngredientDetailViewModel @Inject constructor(private val ingredientRepo: IngredientDetailRepository): ViewModel() {
+class IngredientDetailViewModel @Inject constructor(private val ingredientRepo: IngredientDetailRepository) : ViewModel() {
     private val _status = MutableLiveData<CocktailApiStatus>()
 
     val status: LiveData<CocktailApiStatus>
@@ -31,7 +31,7 @@ class IngredientDetailViewModel @Inject constructor(private val ingredientRepo: 
      * @param ingredientName The name of the ingredient
      */
     fun getIngredientDetails(ingredientName: String) {
-        _ingredientName.value = if(ingredientName == "Dark rum") "Rum" else ingredientName
+        _ingredientName.value = if (ingredientName == "Dark rum") "Rum" else ingredientName
         viewModelScope.launch {
             try {
                 _status.value = CocktailApiStatus.LOADING

@@ -1,0 +1,24 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:com.example.liquorade.database$asDomainCategory(kotlin.collections.List((com.example.liquorade.database.CategoryDb)))com.example.liquorade.database/kotlin.collections.-list/as-domain-category.md
+$dokka.location:com.example.liquorade.database$asDomainCocktail(kotlin.collections.List((com.example.liquorade.database.CocktailDb)))com.example.liquorade.database/kotlin.collections.-list/as-domain-cocktail.md
+$dokka.location:com.example.liquorade.domain$asDatabaseCategory(kotlin.collections.List((com.example.liquorade.domain.Category)))com.example.liquorade.domain/kotlin.collections.-list/as-database-category.md
+$dokka.location:com.example.liquorade.domain$asDatabaseCocktail(kotlin.collections.List((com.example.liquorade.domain.Cocktail)), kotlin.String)com.example.liquorade.domain/kotlin.collections.-list/as-database-cocktail.md
+com.example.liquorade
+com.example.liquorade.about
+com.example.liquorade.category
+com.example.liquorade.category.di
+com.example.liquorade.cocktail
+com.example.liquorade.cocktail.di
+com.example.liquorade.cocktaildetail
+com.example.liquorade.cocktaildetail.di
+com.example.liquorade.database
+com.example.liquorade.di
+com.example.liquorade.domain
+com.example.liquorade.ingredientdetail
+com.example.liquorade.ingredientdetail.di
+com.example.liquorade.network
+com.example.liquorade.randomcocktail
+com.example.liquorade.randomcocktail.di
+com.example.liquorade.repository
+com.example.liquorade.util

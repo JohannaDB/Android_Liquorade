@@ -15,7 +15,7 @@ interface CocktailApiService {
      */
     @GET("list.php?i=list")
     suspend fun getCategories():
-            CategoryList
+        CategoryList
 
     /**
      * Returns all cocktails of a specific category
@@ -25,7 +25,7 @@ interface CocktailApiService {
      */
     @GET("filter.php?")
     suspend fun getCocktails(@Query("i") categoryName: String):
-            CocktailList
+        CocktailList
 
     /**
      * Returns cocktail details of a specific cocktail
@@ -36,7 +36,7 @@ interface CocktailApiService {
     @GET("lookup.php?")
     @Annotation
     suspend fun getCocktailDetails(@Query("i") cocktailId: String):
-            CocktailDetail
+        CocktailDetail
 
     /**
      * Returns ingredient details of a specific ingredient
@@ -46,7 +46,7 @@ interface CocktailApiService {
      */
     @GET("search.php?")
     suspend fun getIngredientDetails(@Query("i") ingredientName: String):
-            IngredientDetails
+        IngredientDetails
 
     /**
      * Returns cocktail details of a random cocktail
@@ -56,5 +56,5 @@ interface CocktailApiService {
     @GET("random.php")
     @Annotation
     suspend fun getRandomCocktail():
-            CocktailDetail
+        CocktailDetail
 }

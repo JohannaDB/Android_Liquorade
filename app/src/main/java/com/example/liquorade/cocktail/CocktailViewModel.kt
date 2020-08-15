@@ -7,6 +7,9 @@ import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.repository.CocktailRepository
 import javax.inject.Inject
 
+/**
+ * Api status
+ */
 enum class CocktailApiStatus { LOADING, ERROR, DONE }
 
 class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRepository) :
@@ -54,7 +57,7 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
         if (_cocktailList.value != cocktails) {
             _cocktailList.value = cocktails
         }
-        if(cocktails.isEmpty()) {
+        if (cocktails.isEmpty()) {
             _status.value = CocktailApiStatus.ERROR
         } else {
             _status.value = CocktailApiStatus.DONE

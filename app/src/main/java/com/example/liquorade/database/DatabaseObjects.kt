@@ -29,7 +29,8 @@ fun List<CocktailDb>.asDomainCocktail(): List<Cocktail> {
             idDrink = it.idDrink,
             strDrink = it.strDrink,
             strDrinkThumb = it.strDrinkThumb,
-            categoryName = it.categoryName)
+            categoryName = it.categoryName
+        )
     }
 }
 
@@ -50,6 +51,7 @@ fun List<CategoryDb>.asDomainCategory(): List<Category> {
     return map {
         Category(
             strIngredient1 = it.strIngredient1,
-            imageUrl = it.imageUrl)
+            imageUrl = it.imageUrl
+        )
     }
 }

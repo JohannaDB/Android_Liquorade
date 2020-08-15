@@ -9,9 +9,12 @@ import com.example.liquorade.domain.Category
 import com.example.liquorade.domain.asDatabaseCategory
 import com.example.liquorade.network.CocktailApiService
 import com.example.liquorade.network.ConnectionChecker
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
-
 
 class CategoryRepository @Inject constructor(
     private val service: CocktailApiService,
@@ -30,7 +33,7 @@ class CategoryRepository @Inject constructor(
      *
      * @return LiveData list of categories
      */
-    fun getCategories() : LiveData<List<Category>> {
+    fun getCategories(): LiveData<List<Category>> {
         var categoryData = MediatorLiveData<List<Category>>()
         scope.launch {
             try {
@@ -38,7 +41,7 @@ class CategoryRepository @Inject constructor(
                     val temporaryCategoryList = service.getCategories()
                     val categoryList = ArrayList<Category>()
                     temporaryCategoryList.drinks.forEach { category ->
-                        if(categories.contains(category.strIngredient1)) {
+                        if (categories.contains(category.strIngredient1)) {
                             categoryList.add(category)
                         }
                     }
@@ -48,8 +51,8 @@ class CategoryRepository @Inject constructor(
                         categoryData.value = sortedList
                     }
                 } else {
-                    withContext(Dispatchers.Main){
-                        categoryData.addSource(categoryDao.getAllCategories()){
+                    withContext(Dispatchers.Main) {
+                        categoryData.addSource(categoryDao.getAllCategories()) {
                             categoryData.removeSource(categoryDao.getAllCategories())
                             categoryData.value = it.asDomainCategory()
                         }

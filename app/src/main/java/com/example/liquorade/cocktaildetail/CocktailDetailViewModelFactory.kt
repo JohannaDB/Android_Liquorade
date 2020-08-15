@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.liquorade.repository.CocktailDetailRepository
 
-class CocktailDetailViewModelFactory(private val detailRepo: CocktailDetailRepository): ViewModelProvider.Factory {
+class CocktailDetailViewModelFactory(private val detailRepo: CocktailDetailRepository) : ViewModelProvider.Factory {
     /**
      * Creates a ViewModel
      *
