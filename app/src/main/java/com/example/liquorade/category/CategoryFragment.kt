@@ -70,6 +70,11 @@ class CategoryFragment : Fragment() {
 
         viewModel.getCategories()
 
+        binding.categoryRefreshLayout.setOnRefreshListener {
+            viewModel.getCategories()
+            binding.categoryRefreshLayout.isRefreshing = false
+        }
+
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
         return binding.root

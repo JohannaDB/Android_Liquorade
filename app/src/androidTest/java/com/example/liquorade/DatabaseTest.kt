@@ -10,6 +10,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.database.CocktailDatabaseDao
+import com.example.liquorade.database.asDomainCategory
+import com.example.liquorade.database.asDomainCocktail
 import com.example.liquorade.domain.Category
 import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.asDatabaseCategory
@@ -65,7 +67,7 @@ class DatabaseTest {
     @Throws(IOException::class)
     fun insertCocktails() {
         cocktailDao.insert(testCocktails.asDatabaseCocktail(""))
-        val result = cocktailDao.getCocktails("").getLiveDataValue().asDomainCocktail()
+        val result = cocktailDao.getCocktails("").asDomainCocktail()
         Assert.assertEquals(testCocktails, result)
     }
 
@@ -73,7 +75,7 @@ class DatabaseTest {
     @Throws(IOException::class)
     fun insertCategories() {
         categoryDao.insert(testCategories.asDatabaseCategory())
-        val result = categoryDao.getAllCategories().getLiveDataValue().asDomainCategory()
+        val result = categoryDao.getAllCategories().asDomainCategory()
         Assert.assertEquals(testCategories, result)
     }
 }

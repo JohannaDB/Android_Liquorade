@@ -73,6 +73,11 @@ class CocktailFragment : Fragment() {
 
         viewModel.getCocktails(args.categoryName)
 
+        binding.cocktailRefreshLayout.setOnRefreshListener {
+            viewModel.getCocktails(args.categoryName)
+            binding.cocktailRefreshLayout.isRefreshing = false
+        }
+
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)

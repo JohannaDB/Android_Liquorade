@@ -50,8 +50,8 @@ class IngredientDetailTest {
                     allOf(
                         withId(R.id.cocktail_constraint),
                         childAtPosition(
-                            withId(R.id.nav_host_fragment),
-                            0
+                            withId(R.id.cocktail_refresh_layout),
+                            1
                         )
                     ),
                     0
