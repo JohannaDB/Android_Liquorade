@@ -60,6 +60,11 @@ class CocktailDetailFragment : Fragment() {
             }
         )
 
+        binding.cocktailDetailRefreshLayout.setOnRefreshListener {
+            viewModel.getCocktailDetails(args.cocktailId)
+            binding.cocktailDetailRefreshLayout.isRefreshing = false
+        }
+
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
         return binding.root

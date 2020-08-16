@@ -67,7 +67,7 @@ class DatabaseTest {
     @Throws(IOException::class)
     fun insertCocktails() {
         cocktailDao.insert(testCocktails.asDatabaseCocktail(""))
-        val result = cocktailDao.getCocktails("").getLiveDataValue().asDomainCocktail()
+        val result = cocktailDao.getCocktails("").asDomainCocktail()
         Assert.assertEquals(testCocktails, result)
     }
 
@@ -75,7 +75,7 @@ class DatabaseTest {
     @Throws(IOException::class)
     fun insertCategories() {
         categoryDao.insert(testCategories.asDatabaseCategory())
-        val result = categoryDao.getAllCategories().getLiveDataValue().asDomainCategory()
+        val result = categoryDao.getAllCategories().asDomainCategory()
         Assert.assertEquals(testCategories, result)
     }
 }

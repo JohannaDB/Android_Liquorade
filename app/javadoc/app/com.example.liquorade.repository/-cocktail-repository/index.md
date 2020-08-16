@@ -14,4 +14,4 @@
 
 | Name | Summary |
 |---|---|
-| [getCocktails](get-cocktails.md) | `fun getCocktails(categoryName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): LiveData<`[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Cocktail`](../../com.example.liquorade.domain/-cocktail/index.md)`>>`<br>Gets a list of cocktails from the back-end or from the local database, depending on the internet status |
+| [getCocktails](get-cocktails.md) | `suspend fun getCocktails(categoryName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Cocktail`](../../com.example.liquorade.domain/-cocktail/index.md)`>`<br>Gets a list of cocktails from the back-end or from the local database, depending on the internet status |

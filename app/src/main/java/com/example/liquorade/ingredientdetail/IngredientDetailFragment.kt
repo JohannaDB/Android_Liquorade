@@ -49,6 +49,11 @@ class IngredientDetailFragment : Fragment() {
 
         viewModel.getIngredientDetails(args.ingredientName)
 
+        binding.ingredientDetailRefreshLayout.setOnRefreshListener {
+            viewModel.getIngredientDetails(args.ingredientName)
+            binding.ingredientDetailRefreshLayout.isRefreshing = false
+        }
+
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
         return binding.root

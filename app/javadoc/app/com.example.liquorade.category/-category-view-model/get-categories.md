@@ -2,10 +2,7 @@
 
 # getCategories
 
-`fun getCategories(): LiveData<`[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Category`](../../com.example.liquorade.domain/-category/index.md)`>>`
+`fun getCategories(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)
 
-Gets the list of categories from the Repository and sets the api status to LOADING
-
-**Return**
-LiveData list of categories
+Gets the list of categories from the Repository and sets the api status to LOADING and ERROR or DONE
 

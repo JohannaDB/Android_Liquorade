@@ -32,22 +32,22 @@
 
                 <Button
                     android:id="@+id/random_cocktail_button"
+                    style="@style/ButtonTabletStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     android:text="@string/random_cocktail"
-                    android:textAllCaps="false"
-                    app:theme="@style/ButtonTabletStyle" />
+                    android:textAllCaps="false" />
 
                 <TextView
                     android:id="@+id/random_cocktail_name"
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
-                    android:text="@{viewModel.randomCocktail.strDrink}"
-                    app:theme="@style/TitleStyle" />
+                    android:text="@{viewModel.randomCocktail.strDrink}" />
 
                 <ImageView
                     android:id="@+id/random_cocktail_image"
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:theme="@style/PaddingTabletStyle">
+                    android:theme="@style/PaddingTabletStyle">
 
                     <LinearLayout
                         android:id="@+id/random_cocktail_category_container"
@@ -74,11 +74,11 @@
 
                         <TextView
                             android:id="@+id/random_cocktail_category_title"
+                            style="@style/SmallTitleStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:text="@string/category"
-                            app:theme="@style/SmallTitleStyle" />
+                            android:text="@string/category" />
 
                         <TextView
                             android:id="@+id/random_cocktail_category"
@@ -97,11 +97,11 @@
 
                         <TextView
                             android:id="@+id/random_cocktail_glass_title"
+                            style="@style/SmallTitleStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:text="@string/serving_glass"
-                            app:theme="@style/SmallTitleStyle" />
+                            android:text="@string/serving_glass" />
 
                         <TextView
                             android:id="@+id/random_cocktail_glass"
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:theme="@style/IngredientListTabletStyle">
+                    android:theme="@style/IngredientListTabletStyle">
 
                     <TextView
                         android:id="@+id/random_cocktail_ingredients_title"
@@ -138,14 +138,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingBottom="8dp"
-                    app:theme="@style/PaddingTabletStyle">
+                    android:theme="@style/PaddingTabletStyle">
 
                     <TextView
                         android:id="@+id/random_cocktail_instructions_title"
+                        style="@style/SmallTitleStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/instructions"
-                        app:theme="@style/SmallTitleStyle" />
+                        android:text="@string/instructions" />
 
                     <TextView
                         android:id="@+id/random_cocktail_instructions"
@@ -162,23 +162,23 @@
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="vertical"
+                app:cocktailApiStatus="@{viewModel.status}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cocktailApiStatus="@{viewModel.status}">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/status_image"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/status_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

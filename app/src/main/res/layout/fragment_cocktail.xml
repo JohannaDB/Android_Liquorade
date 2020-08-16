@@ -10,6 +10,11 @@
             type="com.example.liquorade.cocktail.CocktailViewModel" />
     </data>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/cocktail_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cocktail_constraint"
             android:layout_width="match_parent"
@@ -18,17 +23,17 @@
 
             <Button
                 android:id="@+id/cocktail_info_button"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:textAllCaps="false"
-                app:ingredientInfo="@{viewModel.category_Name}"
+                app:ingredientInfo="@{viewModel.categoryName}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:theme="@style/ButtonStyle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cocktail_grid"
@@ -66,9 +71,9 @@
                     android:id="@+id/status_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"/>
-
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

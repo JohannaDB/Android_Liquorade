@@ -2,7 +2,7 @@
 
 # getCocktails
 
-`fun getCocktails(categoryName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): LiveData<`[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Cocktail`](../../com.example.liquorade.domain/-cocktail/index.md)`>>`
+`suspend fun getCocktails(categoryName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Cocktail`](../../com.example.liquorade.domain/-cocktail/index.md)`>`
 
 Gets a list of cocktails from the back-end or from the local database, depending on the internet status
 
@@ -11,5 +11,5 @@ Gets a list of cocktails from the back-end or from the local database, depending
 `categoryName` - is the specified category name of the cocktails
 
 **Return**
-LiveData list of cocktails
+List of cocktails
 

@@ -1,6 +1,5 @@
 package com.example.liquorade.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -23,7 +22,7 @@ interface CocktailDatabaseDao {
      * @return All cocktails from a specific category stored in the database
      */
     @Query("SELECT * FROM cocktails WHERE category = :categoryName ORDER BY cocktail_name")
-    fun getCocktails(categoryName: String): LiveData<List<CocktailDb>>
+    fun getCocktails(categoryName: String): List<CocktailDb>
 }
 
 @Dao
@@ -42,5 +41,5 @@ interface CategoryDatabaseDao {
      * @return All categories stored in the database
      */
     @Query("SELECT * FROM categories ORDER BY category_name")
-    fun getAllCategories(): LiveData<List<CategoryDb>>
+    fun getAllCategories(): List<CategoryDb>
 }

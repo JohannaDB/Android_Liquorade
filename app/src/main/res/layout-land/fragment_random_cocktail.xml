@@ -32,30 +32,30 @@
 
                 <Button
                     android:id="@+id/random_cocktail_button"
+                    style="@style/ButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     android:text="@string/random_cocktail"
-                    android:textAllCaps="false"
-                    app:theme="@style/ButtonStyle" />
+                    android:textAllCaps="false" />
 
                 <TextView
                     android:id="@+id/random_cocktail_name"
+                    style="@style/TitleStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
-                    android:text="@{viewModel.randomCocktail.strDrink}"
-                    app:theme="@style/TitleStyle" />
+                    android:text="@{viewModel.randomCocktail.strDrink}" />
 
                 <LinearLayout
                     android:id="@+id/random_cocktail_container_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:background="@color/colorPrimary"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/random_cocktail_image"
@@ -74,90 +74,90 @@
 
                         <TextView
                             android:id="@+id/random_cocktail_category_title"
+                            style="@style/SmallTitleStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:text="@string/category"
-                            android:textColor="@color/white"
-                            app:theme="@style/SmallTitleStyle" />
+                            android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/random_cocktail_category"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:textColor="@color/white"
-                            android:text="@{viewModel.randomCocktail.strCategory}" />
+                            android:text="@{viewModel.randomCocktail.strCategory}"
+                            android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/random_cocktail_glass_title"
+                            style="@style/SmallTitleStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:text="@string/serving_glass"
-                            android:textColor="@color/white"
-                            app:theme="@style/SmallTitleStyle" />
+                            android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/random_cocktail_glass"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:textColor="@color/white"
-                            android:text="@{viewModel.randomCocktail.strGlass}" />
+                            android:text="@{viewModel.randomCocktail.strGlass}"
+                            android:textColor="@color/white" />
                     </LinearLayout>
                 </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/random_cocktail_container_horizontal_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <LinearLayout
-                    android:id="@+id/random_cocktail_instructions_container"
+                    android:id="@+id/random_cocktail_container_horizontal_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:paddingBottom="8dp"
-                    app:theme="@style/PaddingStyle">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/random_cocktail_instructions_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/instructions"
-                        app:theme="@style/SmallTitleStyle" />
-
-                    <TextView
-                        android:id="@+id/random_cocktail_instructions"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.randomCocktail.strInstructions}" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/random_cocktail_ingredients_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    app:theme="@style/IngredientListStyle">
-
-                    <TextView
-                        android:id="@+id/random_cocktail_ingredients_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ingredients"
-                        android:textSize="20sp" />
-
-                    <com.example.liquorade.util.NonScrollListView
-                        android:id="@+id/random_cocktail_ingredients"
+                    <LinearLayout
+                        android:id="@+id/random_cocktail_instructions_container"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingBottom="8dp"
+                        android:theme="@style/PaddingStyle">
+
+                        <TextView
+                            android:id="@+id/random_cocktail_instructions_title"
+                            style="@style/SmallTitleStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/instructions" />
+
+                        <TextView
+                            android:id="@+id/random_cocktail_instructions"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.randomCocktail.strInstructions}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/random_cocktail_ingredients_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:theme="@style/IngredientListStyle">
+
+                        <TextView
+                            android:id="@+id/random_cocktail_ingredients_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:textSize="20sp" />
+
+                        <com.example.liquorade.util.NonScrollListView
+                            android:id="@+id/random_cocktail_ingredients"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -167,23 +167,23 @@
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="vertical"
+                app:cocktailApiStatus="@{viewModel.status}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cocktailApiStatus="@{viewModel.status}">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/status_image"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/status_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
