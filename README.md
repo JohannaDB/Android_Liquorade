@@ -10,3 +10,18 @@ The Liquorade app uses data from the TheCocktailDB (www.thecocktaildb.com) datab
 - [Moshi:](https://github.com/square/moshi) Used to parse JSON to Kotlin data objects.  
 - [Glide:](https://bumptech.github.io/glide/) Used to load and cache images by URL.  
 - [Dagger 2:](https://dagger.dev/) Used for dependency injection.  
+
+## Documentation
+[Dokka documentation](https://github.com/JohannaDB/Android_Liquorade/blob/master/app/javadoc/app/index.md)
+
+## Installation
+If you would like to run the project on your local machine, you will need the following:
+- Android Studio
+- Gradle  
+
+Clone the repository using the following command:
+```sh 
+ git clone https://github.com/JohannaDB/Android_Liquorade.git
+```
+
+Open the project with Android Studio and build the APK to test the application on your physical device or emulator.
