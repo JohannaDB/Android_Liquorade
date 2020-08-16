@@ -66,17 +66,12 @@ class CocktailFragment : Fragment() {
         )
 
         binding.cocktailInfoButton.setOnClickListener { _ ->
-            if (viewModel.category_Name != "") {
-                findNavController().navigate(CocktailFragmentDirections.actionCocktailFragmentToIngredientDetailFragment(viewModel.category_Name))
+            if (viewModel.categoryName != "") {
+                findNavController().navigate(CocktailFragmentDirections.actionCocktailFragmentToIngredientDetailFragment(viewModel.categoryName))
             }
         }
 
-        viewModel.getCocktails(args.categoryName).observe(
-            viewLifecycleOwner,
-            Observer {
-                viewModel.setCocktails(it)
-            }
-        )
+        viewModel.getCocktails(args.categoryName)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)

@@ -56,7 +56,7 @@
                         android:paddingTop="0dp"
                         android:text="@string/get_started"
                         android:textColor="@color/white"
-                        app:theme="@style/TitleStyle" />
+                        style="@style/TitleStyle" />
                     <TextView
                         android:id="@+id/category_start_text"
                         android:layout_width="wrap_content"

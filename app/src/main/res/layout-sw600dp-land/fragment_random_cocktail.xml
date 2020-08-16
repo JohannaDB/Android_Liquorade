@@ -39,7 +39,7 @@
                     android:layout_marginRight="8dp"
                     android:text="@string/random_cocktail"
                     android:textAllCaps="false"
-                    app:theme="@style/ButtonTabletStyle" />
+                    style="@style/ButtonTabletStyle" />
 
                 <TextView
                     android:id="@+id/random_cocktail_name"
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:text="@{viewModel.randomCocktail.strDrink}"
-                    app:theme="@style/TitleStyle" />
+                    style="@style/TitleStyle" />
 
                 <LinearLayout
                     android:id="@+id/random_cocktail_container_horizontal"
@@ -62,7 +62,7 @@
                         android:layout_weight="1"
                         android:scaleType="centerCrop"
                         app:imageUrlRounded="@{viewModel.randomCocktail.strDrinkThumb}"
-                        app:theme="@style/PaddingTabletStyle"/>
+                        style="@style/PaddingTabletStyle"/>
                     <LinearLayout
                         android:id="@+id/random_cocktail_info_container"
                         android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            app:theme="@style/PaddingTabletStyle">
+                            android:theme="@style/PaddingTabletStyle">
 
                             <LinearLayout
                                 android:id="@+id/random_cocktail_category_container"
@@ -89,7 +89,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
                                     android:text="@string/category"
-                                    app:theme="@style/SmallTitleStyle" />
+                                    style="@style/SmallTitleStyle" />
 
                                 <TextView
                                     android:id="@+id/random_cocktail_category"
@@ -112,7 +112,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
                                     android:text="@string/serving_glass"
-                                    app:theme="@style/SmallTitleStyle" />
+                                    style="@style/SmallTitleStyle" />
 
                                 <TextView
                                     android:id="@+id/random_cocktail_glass"
@@ -127,7 +127,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            app:theme="@style/IngredientListTabletStyle">
+                            android:theme="@style/IngredientListTabletStyle">
 
                             <TextView
                                 android:id="@+id/random_cocktail_ingredients_title"
@@ -148,14 +148,14 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:paddingBottom="8dp"
-                            app:theme="@style/PaddingTabletStyle">
+                            android:theme="@style/PaddingTabletStyle">
 
                             <TextView
                                 android:id="@+id/random_cocktail_instructions_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/instructions"
-                                app:theme="@style/SmallTitleStyle" />
+                                style="@style/SmallTitleStyle" />
 
                             <TextView
                                 android:id="@+id/random_cocktail_instructions"

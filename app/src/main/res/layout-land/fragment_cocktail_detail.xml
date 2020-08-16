@@ -28,7 +28,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:theme="@style/TitleStyle" />
+                style="@style/TitleStyle" />
 
             <LinearLayout
                 android:id="@+id/cocktail_detail_container"
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:theme="@style/PaddingStyle"
+                    android:theme="@style/PaddingStyle"
                     android:orientation="vertical">
 
                     <TextView
@@ -60,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/category"
-                        app:theme="@style/SmallTitleStyle"/>
+                        style="@style/SmallTitleStyle"/>
 
                     <TextView
                         android:id="@+id/cocktail_detail_category"
@@ -74,7 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/serving_glass"
-                        app:theme="@style/SmallTitleStyle"/>
+                        style="@style/SmallTitleStyle"/>
 
                     <TextView
                         android:id="@+id/cocktail_detail_glass"
@@ -99,13 +99,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1"
-                    app:theme="@style/PaddingStyle" >
+                    android:theme="@style/PaddingStyle" >
                     <TextView
                         android:id="@+id/cocktail_detail_instructions_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/instructions"
-                        app:theme="@style/SmallTitleStyle"/>
+                        style="@style/SmallTitleStyle"/>
 
                     <TextView
                         android:id="@+id/cocktail_detail_instructions"
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    app:theme="@style/IngredientListStyle">
+                    android:theme="@style/IngredientListStyle">
 
                     <TextView
                         android:id="@+id/cocktail_detail_ingredients_title"

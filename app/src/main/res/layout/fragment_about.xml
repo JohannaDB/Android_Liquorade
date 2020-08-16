@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
@@ -17,7 +16,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
-            app:theme="@style/PaddingStyle">
+            android:theme="@style/PaddingStyle">
 
             <ImageView
                 android:id="@+id/about_image"
@@ -31,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_title"
                 android:textColor="@color/white"
-                app:theme="@style/TitleStyle"/>
+                style="@style/TitleStyle"/>
 
             <TextView
                 android:id="@+id/about_text"

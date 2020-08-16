@@ -10,8 +10,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.liquorade.database.CategoryDatabaseDao
 import com.example.liquorade.database.CocktailDatabase
 import com.example.liquorade.database.CocktailDatabaseDao
-import com.example.liquorade.database.asDomainCategory
-import com.example.liquorade.database.asDomainCocktail
 import com.example.liquorade.domain.Category
 import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.domain.asDatabaseCategory

@@ -3,9 +3,11 @@ package com.example.liquorade.category
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.liquorade.cocktail.CocktailApiStatus
 import com.example.liquorade.domain.Category
 import com.example.liquorade.repository.CategoryRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRepository) : ViewModel() {
@@ -27,32 +29,22 @@ class CategoryViewModel @Inject constructor(private val categoryRepo: CategoryRe
         get() = _navigation
 
     /**
-     * Gets the list of categories from the Repository and sets the api status to LOADING
-     *
-     * @return LiveData list of categories
+     * Gets the list of categories from the Repository and sets the api status to LOADING and ERROR or DONE
      */
-    fun getCategories(): LiveData<List<Category>> {
-        if (_categoryList.value == null) {
-            _status.value = CocktailApiStatus.LOADING
-            return categoryRepo.getCategories()
-        }
-        return categoryList
-    }
-
-    /**
-     * Sets the categoryList to the given list of categories
-     * If the list is empty, the api status is set to ERROR, otherwise to DONE
-     *
-     * @param categories List of categories
-     */
-    fun setCategories(categories: List<Category>) {
-        if (_categoryList.value != categories) {
-            _categoryList.value = categories
-        }
-        if (categories.isEmpty()) {
-            _status.value = CocktailApiStatus.ERROR
-        } else {
-            _status.value = CocktailApiStatus.DONE
+    fun getCategories() {
+        viewModelScope.launch {
+            try {
+                _status.value = CocktailApiStatus.LOADING
+                val categories = categoryRepo.getCategories()
+                _categoryList.value = categories
+                if (categories.isEmpty()) {
+                    _status.value = CocktailApiStatus.ERROR
+                } else {
+                    _status.value = CocktailApiStatus.DONE
+                }
+            } catch (e: Exception) {
+                _status.value = CocktailApiStatus.ERROR
+            }
         }
     }
 

@@ -23,11 +23,11 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:textAllCaps="false"
-            app:ingredientInfo="@{viewModel.category_Name}"
+            app:ingredientInfo="@{viewModel.categoryName}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:theme="@style/ButtonStyle" />
+            style="@style/ButtonStyle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cocktail_grid"

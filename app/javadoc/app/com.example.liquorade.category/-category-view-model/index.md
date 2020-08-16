@@ -23,6 +23,5 @@
 | Name | Summary |
 |---|---|
 | [displayCocktails](display-cocktails.md) | `fun displayCocktails(categoryName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Sets the navigation value to the name of selected category |
-| [getCategories](get-categories.md) | `fun getCategories(): LiveData<`[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Category`](../../com.example.liquorade.domain/-category/index.md)`>>`<br>Gets the list of categories from the Repository and sets the api status to LOADING |
+| [getCategories](get-categories.md) | `fun getCategories(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Gets the list of categories from the Repository and sets the api status to LOADING and ERROR or DONE |
 | [navigationComplete](navigation-complete.md) | `fun navigationComplete(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Method gets called when the navigation is completed |
-| [setCategories](set-categories.md) | `fun setCategories(categories: `[`List`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)`<`[`Category`](../../com.example.liquorade.domain/-category/index.md)`>): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>Sets the categoryList to the given list of categories If the list is empty, the api status is set to ERROR, otherwise to DONE |

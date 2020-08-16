@@ -14,7 +14,7 @@
         android:id="@+id/category_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="false">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/category_constraint"
@@ -60,7 +60,7 @@
                         android:paddingTop="0dp"
                         android:text="@string/get_started"
                         android:textColor="@color/white"
-                        app:theme="@style/TitleStyle" />
+                        style="@style/TitleStyle" />
                     <TextView
                         android:id="@+id/category_start_text"
                         android:layout_width="match_parent"

@@ -30,7 +30,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:theme="@style/PaddingStyle">
+                android:theme="@style/PaddingStyle">
 
                 <ImageView
                     android:id="@+id/ingredient_detail_image"
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:text="@{viewModel.ingredientDetail.strIngredient}"
-                    app:theme="@style/TitleStyle" />
+                    style="@style/TitleStyle" />
 
                 <TextView
                     android:id="@+id/ingredient_detail_description"

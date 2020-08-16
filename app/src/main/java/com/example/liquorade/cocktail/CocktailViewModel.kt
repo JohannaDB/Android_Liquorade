@@ -3,8 +3,10 @@ package com.example.liquorade.cocktail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.liquorade.domain.Cocktail
 import com.example.liquorade.repository.CocktailRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -19,9 +21,9 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
     val status: LiveData<CocktailApiStatus>
         get() = _status
 
-    private var _category_Name: String = ""
-    val category_Name: String
-        get() = _category_Name
+    private var _categoryName: String = ""
+    val categoryName: String
+        get() = _categoryName
 
     private val _cocktailList = MutableLiveData<List<Cocktail>>()
 
@@ -34,33 +36,23 @@ class CocktailViewModel @Inject constructor(private val cocktailRepo: CocktailRe
         get() = _navigation
 
     /**
-     * Gets the list of cocktails from the Repository and sets the api status to LOADING
-     *
-     * @return LiveData list of cocktails
+     * Gets the list of cocktails from the Repository and sets the api status to LOADING and ERROR or DONE
      */
-    fun getCocktails(categoryName: String): LiveData<List<Cocktail>> {
-        if (_cocktailList.value == null) {
-            _status.value = CocktailApiStatus.LOADING
-            _category_Name = categoryName
-            return cocktailRepo.getCocktails(categoryName)
-        }
-        return cocktailList
-    }
-
-    /**
-     * Sets the cocktailList to the given list of cocktails
-     * If the list is empty, the api status is set to ERROR, otherwise to DONE
-     *
-     * @param cocktails List of cocktails
-     */
-    fun setCocktails(cocktails: List<Cocktail>) {
-        if (_cocktailList.value != cocktails) {
-            _cocktailList.value = cocktails
-        }
-        if (cocktails.isEmpty()) {
-            _status.value = CocktailApiStatus.ERROR
-        } else {
-            _status.value = CocktailApiStatus.DONE
+    fun getCocktails(categoryName: String) {
+        _categoryName = categoryName
+        viewModelScope.launch {
+            try {
+                _status.value = CocktailApiStatus.LOADING
+                val cocktails = cocktailRepo.getCocktails(categoryName)
+                _cocktailList.value = cocktails
+                if (cocktails.isEmpty()) {
+                    _status.value = CocktailApiStatus.ERROR
+                } else {
+                    _status.value = CocktailApiStatus.DONE
+                }
+            } catch (e: Exception) {
+                _status.value = CocktailApiStatus.ERROR
+            }
         }
     }
 

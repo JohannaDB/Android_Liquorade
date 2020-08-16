@@ -68,12 +68,7 @@ class CategoryFragment : Fragment() {
             }
         )
 
-        viewModel.getCategories().observe(
-            viewLifecycleOwner,
-            Observer {
-                viewModel.setCategories(it)
-            }
-        )
+        viewModel.getCategories()
 
         binding.setLifecycleOwner(this)
         setHasOptionsMenu(true)
